@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Plans &amp; ROI - AuraSales</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS Library CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Zero-Flicker Head Theme Script -->
+  <script src="js/theme.js"></script>
+  
+  <!-- Custom Compiled Stylesheet Layers -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+
+  <!-- Localized Premium CSS Layer for Phase 24 -->
+  <style>
+    /* Spacing & Container Constraints */
+    .container-custom {
+      max-width: 1600px !important;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @media (min-width: 992px) {
+      .container-custom {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+    }
+    @media (min-width: 576px) and (max-width: 991px) {
+      .container-custom {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+    }
+    @media (max-width: 575px) {
+      .container-custom {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    }
+
+    /* Color & Style Tokens */
+    :root {
+      --pricing-amber: #D97706;
+      --pricing-teal: #0D9488;
+      --pricing-emerald: #059669;
+    }
+
+    /* Billing Toggle Selector */
+    .billing-toggle-container {
+      display: inline-flex;
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 50px;
+      padding: 6px;
+      align-items: center;
+      position: relative;
+    }
+
+    .billing-toggle-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .billing-toggle-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .save-badge {
+      background: var(--pricing-teal);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+    }
+
+    /* Pricing Plan Card Structure */
+    .pricing-plan-card {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px 30px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .pricing-plan-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--pricing-amber);
+    }
+
+    .pricing-plan-card.highlighted {
+      border-color: var(--pricing-amber);
+      box-shadow: 0 20px 40px rgba(217, 119, 6, 0.08);
+    }
+
+    .pricing-plan-card.highlighted::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--pricing-amber);
+    }
+
+    /* Most Popular Badge Ribbon */
+    .popular-ribbon {
+      position: absolute;
+      top: 15px;
+      right: -35px;
+      background: var(--pricing-amber);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 35px;
+      transform: rotate(45deg);
+      letter-spacing: 0.05em;
+      font-family: var(--font-sans);
+    }
+
+    /* Plan icon styles */
+    .plan-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      background-color: rgba(217, 119, 6, 0.06);
+      color: var(--pricing-amber);
+    }
+
+    .pricing-plan-card.highlighted .plan-icon-box {
+      background-color: var(--pricing-amber);
+      color: #FFFFFF;
+    }
+
+    /* Price transitions */
+    .price-val {
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+    
+    .price-updating {
+      transform: scale(0.9);
+      opacity: 0.6;
+    }
+
+    /* Responsive comparison table */
+    .comparison-table-wrapper {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th {
+      padding: 24px 20px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .comparison-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .comparison-table tr:hover td {
+      background-color: var(--bg-secondary);
+    }
+
+    /* ROI Estimator Card styling */
+    .roi-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .roi-input-group {
+      margin-bottom: 30px;
+    }
+
+    .roi-input-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .roi-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 5px;
+      background: var(--border-color);
+      outline: none;
+    }
+
+    .roi-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--pricing-amber);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .roi-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .roi-output-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .roi-output-card:hover {
+      border-color: var(--pricing-teal);
+    }
+
+    .roi-output-val {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--pricing-amber);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    /* Trust badges */
+    .trust-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .trust-badge-item:hover {
+      border-color: var(--pricing-teal);
+      transform: translateY(-2px);
+    }
+
+    .trust-badge-icon {
+      font-size: 1.25rem;
+      color: var(--pricing-teal);
+    }
+
+    /* Accordion customization for FAQs */
+    .pricing-faq .accordion-item {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color) !important;
+      border-radius: 12px !important;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .pricing-faq .accordion-button {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 600;
+      box-shadow: none !important;
+    }
+
+    .pricing-faq .accordion-button:not(.collapsed) {
+      background: var(--bg-secondary);
+      color: var(--pricing-amber);
+    }
+
+    .pricing-faq .accordion-body {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" style="position: fixed; top: 0; left: 0; height: 3px; background: var(--pricing-amber); width: 0%; z-index: 10500; transition: width 0.1s ease;"></div>
+
+  <!-- Global Preloader Loader -->
+  <div id="global-loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- 1. Sticky Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <i class="fa-solid fa-brain brand-icon me-2"></i>
+          <span>AuraSales</span>
+        </a>
+
+        <!-- Desktop Menu Items (Visible only on lg and above) -->
+        <div class="collapse navbar-collapse d-none d-lg-block flex-grow-0" id="desktopNavbar">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="product.html">Product</a></li>
+            <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+                Resources <i class="fa-solid fa-chevron-down dropdown-toggle-icon"></i>
+              </a>
+              <div class="dropdown-menu-premium" aria-labelledby="resourcesDropdown">
+                <a class="dropdown-item-premium" href="blog.html">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <span>Blog</span>
+                </a>
+                <a class="dropdown-item-premium" href="faq.html">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span>FAQ</span>
+                </a>
+                <a class="dropdown-item-premium" href="contact.html">
+                  <i class="fa-solid fa-headset"></i>
+                  <span>Contact</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side Controls (Desktop) -->
+        <div class="d-none d-lg-flex align-items-center gap-4">
+          <!-- Theme Toggle -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggle">
+              <input type="checkbox" id="themeToggle" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Login -->
+          <a href="login.html" class="btn-premium-outline btn-sm py-2 px-4" style="border-radius: 30px;">Login</a>
+          <!-- Get Started -->
+          <a href="signup.html" class="btn-premium btn-sm py-2 px-4" style="border-radius: 30px;">Get Started</a>
+        </div>
+
+        <!-- Mobile Menu Trigger & Switch (Visible below lg) -->
+        <div class="d-flex d-lg-none align-items-center gap-3">
+          <!-- Theme Toggle (Always accessible) -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggleMobile">
+              <input type="checkbox" id="themeToggleMobile" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Hamburger Toggle Button -->
+          <button class="hamburger-toggle" id="mobileMenuOpen" aria-label="Open Mobile Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Premium Offcanvas Mobile Menu Drawer -->
+  <div class="offcanvas-overlay" id="mobileMenuOverlay"></div>
+  <div class="offcanvas-menu" id="mobileMenuDrawer">
+    <div class="offcanvas-header">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-brain brand-icon me-2"></i>
+        <span>AuraSales</span>
+      </a>
+      <button class="offcanvas-close" id="mobileMenuClose" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-nav-links">
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="index.html">Home</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="product.html">Product</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="features.html">Features</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="industries.html">Industries</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="solutions.html">Solutions</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link active" href="pricing.html">Pricing</a></li>
+        <li class="offcanvas-nav-item">
+          <div class="offcanvas-link mb-2">Resources</div>
+          <ul class="offcanvas-submenu">
+            <li><a class="offcanvas-submenu-link" href="blog.html"><i class="fa-solid fa-newspaper me-2 opacity-75"></i> Blog</a></li>
+            <li><a class="offcanvas-submenu-link" href="faq.html"><i class="fa-solid fa-circle-question me-2 opacity-75"></i> FAQ</a></li>
+            <li><a class="offcanvas-submenu-link" href="contact.html"><i class="fa-solid fa-headset me-2 opacity-75"></i> Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex flex-column gap-3 mt-5">
+        <a href="login.html" class="btn-premium-outline w-full py-2 text-center" style="border-radius: 30px;">Login</a>
+        <a href="signup.html" class="btn-premium w-full py-2 text-center" style="border-radius: 30px;">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PAGE HERO -->
+  <section class="product-hero-section py-6 overflow-hidden position-relative" id="pricing-hero">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="row align-items-center g-5">
+        
+        <!-- Hero Copy Content -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+          <span class="badge-premium mb-3" style="color: var(--pricing-amber); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+            <i class="fa-solid fa-tag me-1"></i> Transparent Pricing
+          </span>
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0" style="font-size: 0.85rem; font-family: var(--font-mono);">
+              <li class="breadcrumb-item"><a href="index.html" class="text-secondary hover-link">Home</a></li>
+              <li class="breadcrumb-item text-primary active" aria-current="page">Pricing</li>
+            </ol>
+          </nav>
+          <h1 class="display-3 fw-bold tracking-tight mb-4 font-display" style="letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary);">
+            Simple &amp; Transparent Pricing
+          </h1>
+          <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.7; max-width: 620px;">
+            Choose a plan optimized for your sales velocity. Accelerate outbound conversions, automate lead qualification, and streamline bidirectional database synchronization with no hidden fees or commitments.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="signup.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Start Free Trial <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="contact.html" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Contact Sales <i class="fa-solid fa-headset"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Illustration -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <div class="position-relative" style="height: 380px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="cta-glow-blur" style="top: -10%; right: 5%;"></div>
+            <div class="cta-grid-overlay"></div>
+            
+            <!-- Floating indicators -->
+            <div class="floating-badge badge-emerald-custom" style="top: 15%; left: 8%;">
+              <i class="fa-solid fa-shield-halved me-1"></i> No Credit Card Required
+            </div>
+            <div class="floating-badge badge-warning-custom" style="bottom: 15%; right: 8%;">
+              <i class="fa-solid fa-rotate-left me-1"></i> Cancel Anytime
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="SaaS Metrics Financial Data representing transparent business pricing models" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: BILLING SWITCH -->
+  <section class="billing-switch-section py-5 overflow-hidden text-center" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="max-w-600 mx-auto" data-aos="zoom-in">
+        <h3 class="font-display fw-bold mb-3 text-md" style="font-size: 1.35rem; color: var(--text-primary);">Choose Your Billing Interval</h3>
+        <p class="text-secondary text-xs mb-4">Select yearly billing to maximize savings across all outbound channels.</p>
+        
+        <div class="billing-toggle-container">
+          <button id="billingToggleMonthly" class="billing-toggle-btn active" onclick="setBilling(false)">Monthly</button>
+          <button id="billingToggleYearly" class="billing-toggle-btn" onclick="setBilling(true)">Yearly <span class="save-badge">Save 20%</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PRICING CARDS -->
+  <section class="pricing-cards-section py-6 overflow-hidden" id="plans-grid">
+    <div class="container-custom">
+      <div class="row g-4 align-items-stretch justify-content-center">
+        
+        <!-- Starter Plan -->
+        <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="pricing-plan-card">
+            <div class="plan-icon-box">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h3 class="font-display fw-bold mb-2" style="font-size: 1.4rem; color: var(--text-primary);">Starter</h3>
+            <p class="text-secondary text-xs mb-4">Perfect for solopreneurs starting outbound automation.</p>
+            
+            <div class="mb-4">
+              <div class="d-flex align-items-baseline gap-1">
+                <span class="fs-2 font-display fw-bold text-primary">$</span>
+                <span id="price-starter" class="display-4 fw-bold text-primary price-val">49</span>
+                <span class="billing-period-text text-secondary text-xs">/mo, billed monthly</span>
+              </div>
+            </div>
+
+            <span class="font-mono text-xs d-block mb-3 text-warning font-bold uppercase" style="font-size: 0.72rem;">Ideal For: Solopreneurs &amp; Early Teams</span>
+            <hr class="my-3" style="border-color: var(--border-color);">
+
+            <ul class="list-unstyled flex-grow-1 d-flex flex-column gap-3 mb-4" style="font-size: 0.85rem;">
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 500 AI Conversations / mo</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 1 User Seat</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Standard Lead Qualification</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> HubSpot Integration Only</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Standard Email Support</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 10 GB Secure Storage</li>
+            </ul>
+
+            <a href="signup.html" class="btn-premium-outline w-100 py-3 text-center" style="border-radius: 30px; font-weight: 600;">Start Starter Trial</a>
+          </div>
+        </div>
+
+        <!-- Growth Plan -->
+        <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-plan-card">
+            <div class="plan-icon-box">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h3 class="font-display fw-bold mb-2" style="font-size: 1.4rem; color: var(--text-primary);">Growth</h3>
+            <p class="text-secondary text-xs mb-4">Accelerate pipeline runs with multi-channel outbound flows.</p>
+            
+            <div class="mb-4">
+              <div class="d-flex align-items-baseline gap-1">
+                <span class="fs-2 font-display fw-bold text-primary">$</span>
+                <span id="price-growth" class="display-4 fw-bold text-primary price-val">129</span>
+                <span class="billing-period-text text-secondary text-xs">/mo, billed monthly</span>
+              </div>
+            </div>
+
+            <span class="font-mono text-xs d-block mb-3 text-warning font-bold uppercase" style="font-size: 0.72rem;">Ideal For: Growing SMB Sales Teams</span>
+            <hr class="my-3" style="border-color: var(--border-color);">
+
+            <ul class="list-unstyled flex-grow-1 d-flex flex-column gap-3 mb-4" style="font-size: 0.85rem;">
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 2,500 AI Conversations / mo</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Up to 5 User Seats</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Advanced Qualification Flow</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Salesforce + HubSpot</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Priority Email Support</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 50 GB Secure Storage</li>
+            </ul>
+
+            <a href="signup.html" class="btn-premium-outline w-100 py-3 text-center" style="border-radius: 30px; font-weight: 600;">Start Growth Trial</a>
+          </div>
+        </div>
+
+        <!-- Professional Plan (Highlighted) -->
+        <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="pricing-plan-card highlighted">
+            <div class="popular-ribbon">Most Popular</div>
+            <div class="plan-icon-box" style="background-color: var(--pricing-amber); color: #FFFFFF;">
+              <i class="fa-solid fa-chess-queen"></i>
+            </div>
+            <h3 class="font-display fw-bold mb-2" style="font-size: 1.4rem; color: var(--text-primary);">Professional</h3>
+            <p class="text-secondary text-xs mb-4">Complete cognitive matrix with bidirectional API syncs.</p>
+            
+            <div class="mb-4">
+              <div class="d-flex align-items-baseline gap-1">
+                <span class="fs-2 font-display fw-bold text-primary">$</span>
+                <span id="price-professional" class="display-4 fw-bold text-primary price-val">299</span>
+                <span class="billing-period-text text-secondary text-xs">/mo, billed monthly</span>
+              </div>
+            </div>
+
+            <span class="font-mono text-xs d-block mb-3 text-warning font-bold uppercase" style="font-size: 0.72rem;">Ideal For: Scaled Mid-Market Teams</span>
+            <hr class="my-3" style="border-color: var(--border-color);">
+
+            <ul class="list-unstyled flex-grow-1 d-flex flex-column gap-3 mb-4" style="font-size: 0.85rem;">
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 10,000 AI Conversations / mo</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Unlimited User Seats</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Custom BANT Qualification Matrix</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> All Integrations + Webhooks</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Priority 24/7 Slack Support</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> 250 GB Secure Storage</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> SAML SSO &amp; Custom Branding</li>
+            </ul>
+
+            <a href="signup.html" class="btn-premium w-100 py-3 text-center" style="border-radius: 30px; font-weight: 700;">Start Pro Trial</a>
+          </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-plan-card">
+            <div class="plan-icon-box">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3 class="font-display fw-bold mb-2" style="font-size: 1.4rem; color: var(--text-primary);">Enterprise</h3>
+            <p class="text-secondary text-xs mb-4">Dedicated cloud clusters with ultimate custom data structures.</p>
+            
+            <div class="mb-4">
+              <div class="d-flex align-items-baseline gap-1" style="height: 52px;">
+                <span class="fs-3 font-display fw-bold text-primary">Custom Pricing</span>
+              </div>
+            </div>
+
+            <span class="font-mono text-xs d-block mb-3 text-warning font-bold uppercase" style="font-size: 0.72rem;">Ideal For: High-Volume Enterprise Ops</span>
+            <hr class="my-3" style="border-color: var(--border-color);">
+
+            <ul class="list-unstyled flex-grow-1 d-flex flex-column gap-3 mb-4" style="font-size: 0.85rem;">
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Unlimited AI Conversations</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Unlimited User Seats</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Custom Qualification Matrices</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Private SLA Dedicated Syncs</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Dedicated Account Architect</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Unlimited S3 Database Storage</li>
+              <li><i class="fa-solid fa-check text-success me-2" style="color: var(--pricing-emerald);"></i> Custom IDP SSO &amp; White Labeling</li>
+            </ul>
+
+            <a href="contact.html" class="btn-premium-outline w-100 py-3 text-center" style="border-radius: 30px; font-weight: 600;">Contact Sales</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: FEATURE COMPARISON -->
+  <section class="feature-comparison-section py-6 overflow-hidden" id="comparison-matrix" style="background-color: var(--bg-secondary);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--pricing-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+          Granular Matrix
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Compare Plan Specifications</h2>
+        <p class="text-secondary">
+          Audit every core feature layer to find the dynamic capacity that aligns with your operational targets.
+        </p>
+      </div>
+
+      <!-- Desktop Table (Visible on md and up) -->
+      <div class="d-none d-md-block" data-aos="fade-up">
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table text-start">
+            <thead>
+              <tr style="background-color: var(--bg-secondary);">
+                <th style="width: 28%;">Feature</th>
+                <th style="width: 18%;">Starter</th>
+                <th style="width: 18%;">Growth</th>
+                <th style="width: 18%;">Professional</th>
+                <th style="width: 18%;">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Team Members</strong></td>
+                <td>1 User</td>
+                <td>Up to 5 Users</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td><strong>AI Conversations</strong></td>
+                <td>500 / mo</td>
+                <td>2,500 / mo</td>
+                <td>10,000 / mo</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td><strong>Lead Qualification</strong></td>
+                <td>Standard Templates</td>
+                <td>Advanced Logic Rules</td>
+                <td>Custom BANT Scorecard</td>
+                <td>Custom Logic &amp; Dedicated Matrix</td>
+              </tr>
+              <tr>
+                <td><strong>CRM Integration</strong></td>
+                <td>HubSpot Only</td>
+                <td>HubSpot &amp; Salesforce</td>
+                <td>All Integrations + Webhooks</td>
+                <td>Custom Private Integration API</td>
+              </tr>
+              <tr>
+                <td><strong>Automation Nodes</strong></td>
+                <td>Standard Sequences</td>
+                <td>Multi-Step Branches</td>
+                <td>Unlimited Multi-Channel Flow</td>
+                <td>Custom Isolated Run Nodes</td>
+              </tr>
+              <tr>
+                <td><strong>Analytics Suite</strong></td>
+                <td>Standard Logs</td>
+                <td>Performance Dashboards</td>
+                <td>Predictive Intelligence Suite</td>
+                <td>Dedicated BI Export &amp; Custom SQL</td>
+              </tr>
+              <tr>
+                <td><strong>Email Support</strong></td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+              </tr>
+              <tr>
+                <td><strong>Priority Support</strong></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><i class="fa-solid fa-check text-success"></i> 24/7 Slack &amp; Phone</td>
+                <td><i class="fa-solid fa-check text-success"></i> Dedicated TAM &amp; SLA</td>
+              </tr>
+              <tr>
+                <td><strong>API Access</strong></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td>Standard REST API</td>
+                <td>Custom GraphQL + High-SLA Webhooks</td>
+              </tr>
+              <tr>
+                <td><strong>Storage Capacity</strong></td>
+                <td>10 GB</td>
+                <td>50 GB</td>
+                <td>250 GB</td>
+                <td>Unlimited Dedicated S3</td>
+              </tr>
+              <tr>
+                <td><strong>White Label Setup</strong></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><i class="fa-solid fa-check text-success"></i> Full White Label Included</td>
+              </tr>
+              <tr>
+                <td><strong>SAML SSO</strong></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td>Included</td>
+                <td>Custom Enterprise IdP Setup</td>
+              </tr>
+              <tr>
+                <td><strong>Custom Branding</strong></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><span class="text-muted font-mono" style="font-size: 0.8rem;">&mdash;</span></td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+                <td><i class="fa-solid fa-check text-success"></i> Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile Stacked Accordion (Visible on mobile only) -->
+      <div class="d-block d-md-none" data-aos="fade-up">
+        <div class="pricing-faq">
+          <div class="accordion" id="mobileComparisonAccordion">
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-users">
+                  Team Members / Seats
+                </button>
+              </h2>
+              <div id="comp-users" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>1 User</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>Up to 5 Users</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>Unlimited</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>Unlimited</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-ai">
+                  AI Conversations
+                </button>
+              </h2>
+              <div id="comp-ai" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>500 / mo</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>2,500 / mo</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>10,000 / mo</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>Unlimited</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-qual">
+                  Lead Qualification
+                </button>
+              </h2>
+              <div id="comp-qual" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>Standard</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>Advanced Logic</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>Custom Scorecard</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>Dedicated Matrix</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-crm">
+                  CRM Integrations
+                </button>
+              </h2>
+              <div id="comp-crm" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>HubSpot Only</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>HubSpot &amp; Salesforce</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>All + Webhooks</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>Private Custom API</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-support">
+                  Support Packages
+                </button>
+              </h2>
+              <div id="comp-support" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>Email Only</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>Priority Email</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>24/7 Slack &amp; Phone</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>TAM &amp; Custom SLA</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comp-branding">
+                  White Labeling &amp; Brand
+                </button>
+              </h2>
+              <div id="comp-branding" class="accordion-collapse collapse" data-bs-parent="#mobileComparisonAccordion">
+                <div class="accordion-body">
+                  <div class="d-flex justify-content-between mb-2"><span>Starter:</span> <strong>None</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Growth:</span> <strong>None</strong></div>
+                  <div class="d-flex justify-content-between mb-2"><span>Professional:</span> <strong>Custom Branding</strong></div>
+                  <div class="d-flex justify-content-between"><span>Enterprise:</span> <strong>Full White Label</strong></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: ROI SAVINGS (Lightweight Estimator) -->
+  <section class="roi-section py-6 overflow-hidden" id="roi-estimator">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--pricing-amber); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          Predict Your Returns
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Interactive ROI Estimator</h2>
+        <p class="text-secondary">
+          Input your team's current parameters and immediately compute the hours saved, meetings scheduled, and potential revenue unlocked.
+        </p>
+      </div>
+
+      <div class="roi-card" data-aos="fade-up">
+        <div class="row g-5">
+          
+          <!-- Slider Inputs -->
+          <div class="col-lg-6">
+            <h4 class="font-display fw-bold mb-4" style="font-size: 1.25rem; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Input Channel Parameters</h4>
+            
+            <!-- Lead Volume -->
+            <div class="roi-input-group">
+              <div class="roi-input-label">
+                <span>Monthly Inbound/Outbound Leads</span>
+                <span id="roi-val-leads" class="text-primary fw-bold font-mono">2,500</span>
+              </div>
+              <input type="range" id="roi-leads" class="roi-slider" min="100" max="10000" step="100" value="2500">
+            </div>
+
+            <!-- Team Size -->
+            <div class="roi-input-group">
+              <div class="roi-input-label">
+                <span>Sales Team Representatives</span>
+                <span id="roi-val-team" class="text-primary fw-bold font-mono">5</span>
+              </div>
+              <input type="range" id="roi-team" class="roi-slider" min="1" max="50" step="1" value="5">
+            </div>
+
+            <!-- Deal Value -->
+            <div class="roi-input-group">
+              <div class="roi-input-label">
+                <span>Average Value Per Deal ($)</span>
+                <span id="roi-val-deal" class="text-primary fw-bold font-mono">$5,000</span>
+              </div>
+              <input type="range" id="roi-deal" class="roi-slider" min="500" max="25000" step="500" value="5000">
+            </div>
+          </div>
+
+          <!-- Calculated Outputs -->
+          <div class="col-lg-6">
+            <h4 class="font-display fw-bold mb-4" style="font-size: 1.25rem; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Estimated Monthly Outcomes</h4>
+            <div class="row g-3">
+              
+              <!-- Hours Saved -->
+              <div class="col-6">
+                <div class="roi-output-card">
+                  <span class="text-muted uppercase font-mono mb-2" style="font-size: 0.65rem;">Hours Reclaimed</span>
+                  <div id="roi-out-hours" class="roi-output-val">1,250 hrs</div>
+                  <span class="text-muted" style="font-size: 0.72rem;">From data entry &amp; follow-ups</span>
+                </div>
+              </div>
+
+              <!-- Meetings Automated -->
+              <div class="col-6">
+                <div class="roi-output-card">
+                  <span class="text-muted uppercase font-mono mb-2" style="font-size: 0.65rem;">Automated Meetings</span>
+                  <div id="roi-out-meetings" class="roi-output-val">300</div>
+                  <span class="text-muted" style="font-size: 0.72rem;">Booked direct on calendar</span>
+                </div>
+              </div>
+
+              <!-- Revenue Opportunity -->
+              <div class="col-6">
+                <div class="roi-output-card">
+                  <span class="text-muted uppercase font-mono mb-2" style="font-size: 0.65rem;">Revenue Unlocked</span>
+                  <div id="roi-out-revenue" class="roi-output-val">$375,000</div>
+                  <span class="text-muted" style="font-size: 0.72rem;">At average 25% close rate</span>
+                </div>
+              </div>
+
+              <!-- Time Reduction -->
+              <div class="col-6">
+                <div class="roi-output-card">
+                  <span class="text-muted uppercase font-mono mb-2" style="font-size: 0.65rem;">Sales Time Reduction</span>
+                  <div id="roi-out-time" class="roi-output-val">65%</div>
+                  <span class="text-muted" style="font-size: 0.72rem;">Of administrative overhead</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: WHY OUR PRICING -->
+  <section class="why-pricing-section py-6 overflow-hidden" id="pricing-benefits" style="background-color: var(--bg-secondary); border-top: 1.5px solid var(--border-color); border-bottom: 1.5px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--pricing-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+          Uncompromising Trust
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Why Partner With AuraSales?</h2>
+        <p class="text-secondary">
+          Enjoy predictability, elite infrastructure support, and complete flexibility designed to protect your cash flow.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-ban"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">No Hidden Fees</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              What you see is exactly what you get. No unlisted infrastructure overage costs, custom layout fees, or mandatory setup charges.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-rectangle-xmark"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Cancel Anytime</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              We avoid restrictive lock-in contracts on standard tiers. Adjust, scale down, or cancel subscriptions on a simple monthly notice.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Free Upgrades</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              Our core model algorithms are continuously updated. Benefit from automated optimization runs and new layout structures.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Secure Payments</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              Transactions are cleared utilizing PCI-DSS compliant gateways. All data transmissions are isolated using SHA-256 standard protocols.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Scalable Plans</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              Transition seamlessly from individual outreach setups to fully staffed outbound operations as your enterprise boundaries expand.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="benefit-premium-card">
+            <div class="card-icon-wrapper mb-3" style="width: 44px; height: 44px; color: var(--pricing-amber); background: rgba(217, 119, 6, 0.06);">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h4 class="font-display mb-2 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Dedicated Support</h4>
+            <p class="text-secondary text-xs mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+              Connect with highly trained support staff optimized to answer pipeline sync configurations, API integrations, and validation hurdles.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: FREQUENT QUESTIONS -->
+  <section class="faq-section py-6 overflow-hidden" id="frequent-questions">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--pricing-amber); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          FAQs
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Frequently Asked Questions</h2>
+        <p class="text-secondary">
+          Find transparent answers to standard inquiries surrounding setups, billings, security protocols, and integration limits.
+        </p>
+      </div>
+
+      <div class="max-w-800 mx-auto pricing-faq" data-aos="fade-up">
+        <div class="accordion" id="faqAccordion">
+          
+          <!-- Q1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1">
+                Can I change plans at any time?
+              </button>
+            </h2>
+            <div id="faq-1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, you can upgrade, downgrade, or cancel your subscription instantly from your billing dashboard. Any plan upgrades will be applied immediately with prorated charges, while downgrades will take effect at the end of your billing cycle.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2">
+                What counts as an AI Conversation?
+              </button>
+            </h2>
+            <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                An AI Conversation represents a complete interaction thread (e.g., continuous qualification dialog, booking sequence, or SMS/email conversation chain) with a unique contact in a 30-day window, regardless of how many individual messages are sent.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3">
+                Are there any hidden setup or implementation fees?
+              </button>
+            </h2>
+            <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely not. All plans are completely transparent. The monthly or annual price indicated is exactly what you are billed. Custom integration engineering and dedicated support SLAs are explicitly outlined in custom Enterprise quotes.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4">
+                Is my lead and customer conversation database secure?
+              </button>
+            </h2>
+            <div id="faq-4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, data security is our ultimate priority. AuraSales utilizes 256-bit SSL encryption for data in transit and at rest, maintains SOC2 Type II compliance standards, and strictly isolates organization datasets on logically partitioned cloud databases.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-5">
+                How does the 14-day free trial operate?
+              </button>
+            </h2>
+            <div id="faq-5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Our 14-day free trial gives you full, unrestricted access to the features of the Starter or Growth tiers. No credit card is required to join. If you choose not to subscribe after 14 days, your account will simply pause automatically.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-6">
+                Can I connect my own custom CRM system?
+              </h2>
+            </h2>
+            <div id="faq-6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Growth and Professional plans offer native, bidirectional synchronization with industry leaders like Salesforce and HubSpot. Professional and Enterprise tiers support custom webhooks and standard REST API endpoints for proprietary systems.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-7">
+                What is a Dedicated Technical Account Manager (TAM)?
+              </button>
+            </h2>
+            <div id="faq-7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Exclusive to our Enterprise plans, a TAM is a certified system engineer assigned to your organization. They coordinate technical onboarding, develop custom qualification scorecards, support custom database triggers, and verify premium SLA execution.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-8">
+                Do you offer discounts for annual billing intervals?
+              </h2>
+            </h2>
+            <div id="faq-8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! Choosing annual billing gives you an instant 20% flat discount on Starter, Growth, and Professional tiers, translating to massive structural savings across your annual outreach operations.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: ENTERPRISE CONTACT -->
+  <section class="enterprise-banner-section py-6 overflow-hidden" id="enterprise-custom-quote">
+    <div class="container-custom">
+      <div class="cta-banner-wrapper position-relative overflow-hidden" data-aos="zoom-in" style="border: 1.5px solid var(--border-color); border-radius: 24px; padding: 60px 40px; background-color: var(--bg-card);">
+        <div class="cta-glow-blur" style="bottom: -20%; left: -10%;"></div>
+        <div class="cta-grid-overlay"></div>
+        
+        <div class="row align-items-center g-5 position-relative" style="z-index: 2;">
+          <div class="col-lg-7">
+            <span class="badge-premium mb-3" style="color: var(--pricing-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+              Custom Architecture
+            </span>
+            <h2 class="display-4 fw-bold font-display mb-3" style="color: var(--text-primary);">Need a custom plan?</h2>
+            <p class="text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.6; max-width: 600px;">
+              Looking for bespoke models, sovereign data isolation, custom SLAs, or multi-million volume pipelines? AuraSales designs custom blueprints optimized for high-volume enterprise operations.
+            </p>
+            <div class="row g-3 text-start mb-2" style="font-size: 0.9rem;">
+              <div class="col-md-6"><span class="d-block text-secondary"><i class="fa-solid fa-check text-success me-2"></i> Unlimited team seats &amp; accounts</span></div>
+              <div class="col-md-6"><span class="d-block text-secondary"><i class="fa-solid fa-check text-success me-2"></i> Dedicated hands-on onboarding</span></div>
+              <div class="col-md-6"><span class="d-block text-secondary"><i class="fa-solid fa-check text-success me-2"></i> Private custom VPC deployments</span></div>
+              <div class="col-md-6"><span class="d-block text-secondary"><i class="fa-solid fa-check text-success me-2"></i> Bespoke core system integrations</span></div>
+            </div>
+          </div>
+          <div class="col-lg-5 text-lg-end">
+            <div class="d-flex flex-column gap-3 justify-content-lg-end">
+              <a href="contact.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center justify-content-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+                Request Custom Quote <i class="fa-solid fa-file-invoice"></i>
+              </a>
+              <a href="contact.html" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center justify-content-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+                Book Strategy Call <i class="fa-regular fa-calendar-days"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: PAYMENT & TRUST (Display Trust Badges) -->
+  <section class="trust-badges-section py-5 overflow-hidden" id="trust-center" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="row g-3 justify-content-center">
+        
+        <div class="col-lg-2.5 col-md-4 col-sm-6">
+          <div class="trust-badge-item">
+            <i class="fa-solid fa-shield-halved trust-badge-icon"></i>
+            <span>Secure Checkout</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2.5 col-md-4 col-sm-6">
+          <div class="trust-badge-item">
+            <i class="fa-solid fa-rotate-left trust-badge-icon"></i>
+            <span>30-Day Guarantee</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2.5 col-md-4 col-sm-6">
+          <div class="trust-badge-item">
+            <i class="fa-solid fa-bolt trust-badge-icon"></i>
+            <span>Fast Onboarding</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2.5 col-md-4 col-sm-6">
+          <div class="trust-badge-item">
+            <i class="fa-solid fa-circle-check trust-badge-icon"></i>
+            <span>99.9% Availability</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2.5 col-md-4 col-sm-6">
+          <div class="trust-badge-item">
+            <i class="fa-solid fa-credit-card trust-badge-icon"></i>
+            <span>Safe Billing</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Reusable Footer Placeholder -->
+  <footer class="site-footer">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand mb-3 d-inline-flex" href="index.html">
+            <i class="fa-solid fa-brain brand-icon me-2"></i>
+            <span>AuraSales</span>
+          </a>
+          <p class="text-secondary" style="max-width: 320px;">Premium sales outreach, customer intelligence, and conversation workflow automation driven by high-efficiency AI layers.</p>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title">Platform</h5>
+          <ul class="footer-links">
+            <li><a href="features.html">Features</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="pricing.html">Pricing Structure</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="blog.html">Industry Blog</a></li>
+            <li><a href="faq.html">System FAQs</a></li>
+            <li><a href="contact.html">Contact Hub</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="footer-title">Access Console</h5>
+          <p class="text-secondary mb-3">Launch into our secure portal to monitor conversions, pipeline activity, and active automation tasks.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="login.html" class="btn-premium-outline btn-sm py-2 px-3">Launch Console</a>
+            <a href="signup.html" class="btn-premium btn-sm py-2 px-3">Join Workspace</a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5" style="border-color: var(--border-color)">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <p class="text-muted mb-0" style="font-size: 0.9rem;">&copy; 2026 AuraSales Inc. All rights reserved.</p>
+        <div class="d-flex gap-4">
+          <a href="#" class="text-muted" style="font-size: 0.9rem;">Terms of Service</a>
+          <a href="#" class="text-muted" style="font-size: 0.9rem;">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 11. Back To Top Button -->
+  <div id="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- CDN Script Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom Executable Main Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+
+  <!-- Localized Pricing & ROI Estimator Interactive Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Theme Toggle Fallback listener to guarantee functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+          if (themeToggle) themeToggle.checked = true;
+          if (themeToggleMobile) themeToggleMobile.checked = true;
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('theme', 'light');
+          if (themeToggle) themeToggle.checked = false;
+          if (themeToggleMobile) themeToggleMobile.checked = false;
+        }
+      }
+
+      if (themeToggle) themeToggle.addEventListener('change', switchTheme);
+      if (themeToggleMobile) themeToggleMobile.addEventListener('change', switchTheme);
+
+      // Initialize switch theme position on load
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.checked = true;
+        if (themeToggleMobile) themeToggleMobile.checked = true;
+      } else {
+        document.body.classList.remove('dark-mode');
+        if (themeToggle) themeToggle.checked = false;
+        if (themeToggleMobile) themeToggleMobile.checked = false;
+      }
+
+      // ROI Estimator inputs
+      const inputLeads = document.getElementById('roi-leads');
+      const inputTeam = document.getElementById('roi-team');
+      const inputDeal = document.getElementById('roi-deal');
+
+      const valLeads = document.getElementById('roi-val-leads');
+      const valTeam = document.getElementById('roi-val-team');
+      const valDeal = document.getElementById('roi-val-deal');
+
+      const outHours = document.getElementById('roi-out-hours');
+      const outMeetings = document.getElementById('roi-out-meetings');
+      const outRevenue = document.getElementById('roi-out-revenue');
+      const outTime = document.getElementById('roi-out-time');
+
+      function updateROI() {
+        const L = parseInt(inputLeads.value);
+        const S = parseInt(inputTeam.value);
+        const D = parseInt(inputDeal.value);
+        
+        // Format labels
+        valLeads.textContent = L.toLocaleString();
+        valTeam.textContent = S.toLocaleString();
+        valDeal.textContent = '$' + D.toLocaleString();
+        
+        // Output calculations
+        const hoursSaved = Math.round(L * 0.5);
+        const meetingsAutomated = Math.round(L * 0.12);
+        const revenueOpportunity = Math.round(meetingsAutomated * 0.25 * D);
+        
+        // Team standard work hours = S reps * 160 hrs
+        const totalTeamHours = S * 160;
+        const reductionPercent = Math.min(85, Math.round((hoursSaved / (totalTeamHours + hoursSaved)) * 100));
+
+        // Format and print outputs
+        outHours.textContent = hoursSaved.toLocaleString() + " hrs";
+        outMeetings.textContent = meetingsAutomated.toLocaleString();
+        outRevenue.textContent = '$' + revenueOpportunity.toLocaleString();
+        outTime.textContent = reductionPercent + "%";
+      }
+
+      // Add slider listeners
+      if (inputLeads) inputLeads.addEventListener('input', updateROI);
+      if (inputTeam) inputTeam.addEventListener('input', updateROI);
+      if (inputDeal) inputDeal.addEventListener('input', updateROI);
+
+      // Perform initial update on boot
+      updateROI();
+
+    });
+
+    // Pricing Interval Switches
+    let isYearly = false;
+
+    function animateValue(obj, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function animatePrice(id, start, end) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('price-updating');
+      animateValue(el, start, end, 300);
+      setTimeout(() => {
+        el.classList.remove('price-updating');
+      }, 300);
+    }
+
+    function setBilling(yearly) {
+      if (isYearly === yearly) return;
+      isYearly = yearly;
+
+      const monthlyBtn = document.getElementById('billingToggleMonthly');
+      const yearlyBtn = document.getElementById('billingToggleYearly');
+
+      if (isYearly) {
+        if (yearlyBtn) yearlyBtn.classList.add('active');
+        if (monthlyBtn) monthlyBtn.classList.remove('active');
+
+        animatePrice('price-starter', 49, 39);
+        animatePrice('price-growth', 129, 99);
+        animatePrice('price-professional', 299, 239);
+
+        document.querySelectorAll('.billing-period-text').forEach(el => {
+          el.textContent = '/mo, billed annually';
+        });
+      } else {
+        if (monthlyBtn) monthlyBtn.classList.add('active');
+        if (yearlyBtn) yearlyBtn.classList.remove('active');
+
+        animatePrice('price-starter', 39, 49);
+        animatePrice('price-growth', 99, 129);
+        animatePrice('price-professional', 239, 299);
+
+        document.querySelectorAll('.billing-period-text').forEach(el => {
+          el.textContent = '/mo, billed monthly';
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

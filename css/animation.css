@@ -1,0 +1,105 @@
+/* 
+   ================================================================
+   PREMIUM AI SALES ASSISTANT - ANIMATIONS (animation.css)
+   ================================================================
+*/
+
+/* 1. Subtle Floating Loop (Zen Float) */
+@keyframes zenFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.animate-float {
+  animation: zenFloat 5s ease-in-out infinite;
+}
+
+/* 2. Micro Pulse Glow (For buttons & custom badges) */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px var(--border-glow);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(217, 119, 6, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--border-glow);
+  }
+}
+.pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* 3. Entrance Fade Up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 4. Luxury Image Zoom & Filter Hover */
+.premium-hover-image {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.premium-hover-image img {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+}
+.premium-hover-image:hover img {
+  transform: scale(1.04);
+}
+
+/* 5. Elegant Card Border Glow on Hover */
+.premium-card-glow {
+  position: relative;
+  z-index: 1;
+}
+.premium-card-glow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 30px var(--border-glow);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+.premium-card-glow:hover::after {
+  opacity: 1;
+}
+
+/* 6. Subtle Rotation for Gear or Spinner icons */
+@keyframes iconRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hover-rotate:hover .fa-cog, 
+.hover-rotate:hover .fa-sync-alt {
+  animation: iconRotate 2.5s linear infinite;
+}
+
+/* 7. Preventing AOS horizontal layout shifts */
+.aos-overflow-guard {
+  overflow: hidden !important;
+}

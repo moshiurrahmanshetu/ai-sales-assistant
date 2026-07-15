@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Sales Center - AuraSales</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS Library CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Zero-Flicker Head Theme Script -->
+  <script src="js/theme.js"></script>
+  
+  <!-- Custom Compiled Stylesheet Layers -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+
+  <!-- Localized Premium CSS Layer for Contact & Sales Center -->
+  <style>
+    /* Spacing & Container Constraints */
+    .container-custom {
+      max-width: 1600px !important;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @media (min-width: 992px) {
+      .container-custom {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+    }
+    @media (min-width: 576px) and (max-width: 991px) {
+      .container-custom {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+    }
+    @media (max-width: 575px) {
+      .container-custom {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    }
+
+    /* Color Tokens & Variables */
+    :root {
+      --contact-amber: #D97706;
+      --contact-amber-hover: #B45309;
+      --contact-teal: #0D9488;
+      --contact-teal-hover: #0F766E;
+      --contact-emerald: #059669;
+      --contact-slate: #475569;
+      --contact-charcoal: #0F172A;
+      --contact-warm-white: #FAF9F6;
+      --contact-off-white: #F5F5F7;
+      --contact-beige: #F5F2EB;
+      --contact-sand: #EAE6DF;
+      --contact-glow: rgba(217, 119, 6, 0.15);
+    }
+
+    /* Contact Option Card Styles */
+    .contact-card-premium {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 35px 25px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--contact-amber);
+    }
+
+    .contact-card-premium .card-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      background-color: rgba(217, 119, 6, 0.06);
+      color: var(--contact-amber);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card-premium:hover .card-icon-box {
+      background-color: var(--contact-amber);
+      color: #FFFFFF;
+    }
+
+    .contact-card-premium .response-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--contact-teal);
+      background-color: rgba(13, 148, 136, 0.08);
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    /* Form Fields Styling */
+    .form-group-premium {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .form-control-premium {
+      background-color: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .form-control-premium:focus {
+      background-color: var(--bg-card);
+      border-color: var(--contact-amber);
+      box-shadow: 0 0 0 4px var(--contact-glow);
+      outline: none;
+    }
+
+    .form-label-premium {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      display: block;
+      font-family: var(--font-sans);
+    }
+
+    /* Book a Demo card special decoration */
+    .demo-card-premium {
+      background-color: var(--bg-card);
+      border: 2px solid var(--contact-teal);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(13, 148, 136, 0.05);
+    }
+
+    .demo-card-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--contact-teal);
+      border-top-left-radius: 22px;
+      border-top-right-radius: 22px;
+    }
+
+    /* Office Locations Styling */
+    .office-card-premium {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .office-card-premium.active-office {
+      border-color: var(--contact-amber);
+      box-shadow: 0 10px 25px rgba(217, 119, 6, 0.06);
+    }
+
+    /* Map Interactive Canvas area */
+    .map-container-premium {
+      background-color: #111827; /* Dark charcoal base to make glowing nodes pop beautifully */
+      border: 1.5px solid var(--border-color);
+      border-radius: 24px;
+      height: 520px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dynamic pulsing pins for the map */
+    .map-marker-pin {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--contact-amber);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+
+    .map-marker-pin::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--contact-amber);
+      border-radius: 50%;
+      top: -10px;
+      left: -10px;
+      animation: pulse-ring 2s infinite ease-out;
+      opacity: 0;
+    }
+
+    .map-marker-pin.active-pin {
+      background-color: var(--contact-teal);
+      transform: scale(1.2);
+    }
+
+    .map-marker-pin.active-pin::after {
+      border-color: var(--contact-teal);
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.3);
+        opacity: 1;
+      }
+      80%, 100% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .map-zoom-btn {
+      width: 38px;
+      height: 38px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .map-zoom-btn:hover {
+      background-color: var(--contact-amber);
+      border-color: var(--contact-amber);
+    }
+
+    /* Help Shortcut Cards styling */
+    .shortcut-card-premium {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 100%;
+      text-decoration: none !important;
+      display: block;
+    }
+
+    .shortcut-card-premium:hover {
+      transform: translateY(-5px);
+      border-color: var(--contact-teal);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Trust Strip */
+    .trust-strip-box {
+      background-color: var(--bg-card);
+      border-top: 1.5px solid var(--border-color);
+      border-bottom: 1.5px solid var(--border-color);
+      padding: 40px 0;
+    }
+
+    .trust-metric-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .trust-metric-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+    }
+
+    /* Forms success state overlay animate */
+    .success-overlay-premium {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      z-index: 20;
+      border-radius: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .success-overlay-premium.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-icon-animated {
+      width: 72px;
+      height: 72px;
+      background-color: rgba(5, 150, 105, 0.1);
+      color: var(--contact-emerald);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+      animation: scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Touch target adjustments */
+    .btn-premium, .btn-premium-outline {
+      min-height: 44px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" style="position: fixed; top: 0; left: 0; height: 3px; background: var(--contact-amber); width: 0%; z-index: 10500; transition: width 0.1s ease;"></div>
+
+  <!-- Global Preloader Loader -->
+  <div id="global-loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- 1. Sticky Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <i class="fa-solid fa-brain brand-icon me-2"></i>
+          <span>AuraSales</span>
+        </a>
+
+        <!-- Desktop Menu Items (Visible only on lg and above) -->
+        <div class="collapse navbar-collapse d-none d-lg-block flex-grow-0" id="desktopNavbar">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="product.html">Product</a></li>
+            <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+                Resources <i class="fa-solid fa-chevron-down dropdown-toggle-icon"></i>
+              </a>
+              <div class="dropdown-menu-premium" aria-labelledby="resourcesDropdown">
+                <a class="dropdown-item-premium" href="blog.html">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <span>Blog</span>
+                </a>
+                <a class="dropdown-item-premium" href="faq.html">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span>FAQ</span>
+                </a>
+                <a class="dropdown-item-premium active" href="contact.html">
+                  <i class="fa-solid fa-headset"></i>
+                  <span>Contact</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side Controls (Desktop) -->
+        <div class="d-none d-lg-flex align-items-center gap-4">
+          <!-- Theme Toggle -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggle">
+              <input type="checkbox" id="themeToggle" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Login -->
+          <a href="login.html" class="btn-premium-outline btn-sm py-2 px-4" style="border-radius: 30px;">Login</a>
+          <!-- Get Started -->
+          <a href="signup.html" class="btn-premium btn-sm py-2 px-4" style="border-radius: 30px;">Get Started</a>
+        </div>
+
+        <!-- Mobile Menu Trigger & Switch (Visible below lg) -->
+        <div class="d-flex d-lg-none align-items-center gap-3">
+          <!-- Theme Toggle (Always accessible) -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggleMobile">
+              <input type="checkbox" id="themeToggleMobile" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Hamburger Toggle Button -->
+          <button class="hamburger-toggle" id="mobileMenuOpen" aria-label="Open Mobile Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Premium Offcanvas Mobile Menu Drawer -->
+  <div class="offcanvas-overlay" id="mobileMenuOverlay"></div>
+  <div class="offcanvas-menu" id="mobileMenuDrawer">
+    <div class="offcanvas-header">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-brain brand-icon me-2"></i>
+        <span>AuraSales</span>
+      </a>
+      <button class="offcanvas-close" id="mobileMenuClose" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-nav-links">
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="index.html">Home</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="product.html">Product</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="features.html">Features</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="industries.html">Industries</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="solutions.html">Solutions</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="pricing.html">Pricing</a></li>
+        <li class="offcanvas-nav-item">
+          <div class="offcanvas-link mb-2">Resources</div>
+          <ul class="offcanvas-submenu">
+            <li><a class="offcanvas-submenu-link" href="blog.html"><i class="fa-solid fa-newspaper me-2 opacity-75"></i> Blog</a></li>
+            <li><a class="offcanvas-submenu-link" href="faq.html"><i class="fa-solid fa-circle-question me-2 opacity-75"></i> FAQ</a></li>
+            <li><a class="offcanvas-submenu-link active" href="contact.html"><i class="fa-solid fa-headset me-2 opacity-75"></i> Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex flex-column gap-3 mt-5">
+        <a href="login.html" class="btn-premium-outline w-full py-2 text-center" style="border-radius: 30px;">Login</a>
+        <a href="signup.html" class="btn-premium w-full py-2 text-center" style="border-radius: 30px;">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PAGE HERO (With fade-right parent overflow-hidden guard) -->
+  <section class="product-hero-section py-6 overflow-hidden position-relative" id="contact-hero">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="row align-items-center g-5">
+        
+        <!-- Hero Copy Content -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+          <span class="badge-premium mb-3" style="color: var(--contact-amber); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+            <i class="fa-solid fa-headset me-1"></i> Reach Our Experts
+          </span>
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0" style="font-size: 0.85rem; font-family: var(--font-mono);">
+              <li class="breadcrumb-item"><a href="index.html" class="text-secondary hover-link">Home</a></li>
+              <li class="breadcrumb-item text-primary active" aria-current="page">Contact</li>
+            </ol>
+          </nav>
+          <h1 class="display-3 fw-bold tracking-tight mb-4 font-display" style="letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary);">
+            Let's Talk About Your Growth
+          </h1>
+          <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.7; max-width: 620px;">
+            Partner with the next generation of sales intelligence. Connect with our dedicated sales architects, integration consultants, or immediate support teams to accelerate your pipeline and unify workflows.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <button onclick="scrollToSection('book-demo-section')" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Book Demo <i class="fa-solid fa-calendar-check"></i>
+            </button>
+            <button onclick="scrollToSection('contact-form-section')" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Email Sales <i class="fa-solid fa-envelope"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Illustration -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <div class="position-relative" style="height: 400px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="cta-glow-blur" style="top: -10%; right: 5%;"></div>
+            <div class="cta-grid-overlay"></div>
+            
+            <!-- Floating indicators -->
+            <div class="floating-badge badge-emerald-custom" style="top: 15%; left: 8%;">
+              <i class="fa-solid fa-clock-rotate-left me-1"></i> Under 15m Response
+            </div>
+            <div class="floating-badge badge-warning-custom" style="bottom: 15%; right: 8%;">
+              <i class="fa-solid fa-earth-americas me-1"></i> Global Coverage
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1552581230-c01bc0d48403?auto=format&fit=crop&w=800&q=80" alt="Corporate sales team collaborating on interactive business pipeline dashboards" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: CONTACT OPTIONS -->
+  <section class="py-6 bg-light-sand-theme" id="contact-options" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--contact-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+          Immediate Routing
+        </span>
+        <h2 class="display-5 fw-bold font-display text-primary">Choose Your Channel</h2>
+        <p class="text-secondary">Click the dedicated route below to ensure your message arrives directly to specialized squad coordinators.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1. Sales Card -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 10 Min</span>
+            <div class="card-icon-box">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">Sales Center</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              Discuss custom commercial tiers, high-volume pipeline automation, enterprise-grade SLAs, and personalized pilot program proposals.
+            </p>
+            <button onclick="fillSubjectAndScroll('sales')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Email Sales</button>
+          </div>
+        </div>
+
+        <!-- 2. Customer Support -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 15 Min</span>
+            <div class="card-icon-box" style="background-color: rgba(13, 148, 136, 0.06); color: var(--contact-teal);">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">Customer Support</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              Need help managing your active workspace, adding client seats, configuring daily notification limits, or updating account credentials?
+            </p>
+            <button onclick="fillSubjectAndScroll('support')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Reach Support</button>
+          </div>
+        </div>
+
+        <!-- 3. Technical Support -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 20 Min</span>
+            <div class="card-icon-box">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">Technical Support</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              Resolve advanced issues regarding Salesforce database sync delays, webhook delivery payload errors, or custom OAuth setup bugs.
+            </p>
+            <button onclick="fillSubjectAndScroll('tech')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Request Engineer</button>
+          </div>
+        </div>
+
+        <!-- 4. Partnership -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 2 Hours</span>
+            <div class="card-icon-box">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">Partnership Division</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              Explore software integrations, co-selling programs, system integrator alliances, or affiliate revenue opportunities with AuraSales.
+            </p>
+            <button onclick="fillSubjectAndScroll('partner')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Partner With Us</button>
+          </div>
+        </div>
+
+        <!-- 5. Media Inquiry -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 4 Hours</span>
+            <div class="card-icon-box" style="background-color: rgba(13, 148, 136, 0.06); color: var(--contact-teal);">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">Media &amp; Press Relations</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              Access brand kit materials, request executive commentary, verify leadership background, or schedule an interview with our founders.
+            </p>
+            <button onclick="fillSubjectAndScroll('media')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Press Inquiry</button>
+          </div>
+        </div>
+
+        <!-- 6. General Inquiry -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-card-premium">
+            <span class="response-tag">Avg. Response: 1 Hour</span>
+            <div class="card-icon-box">
+              <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <h4 class="font-display fw-bold mb-2 text-primary">General Inquiry</h4>
+            <p class="text-secondary text-xs flex-grow-1" style="line-height: 1.6;">
+              For miscellaneous topics, physical mail requests, feedback, security reviews, or general community coordination initiatives.
+            </p>
+            <button onclick="fillSubjectAndScroll('general')" class="btn-premium-outline btn-sm py-2 px-4 w-100 mt-4" style="border-radius: 30px;">Send General Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIONS 3 & 4: CONTACT FORM & BOOK A DEMO (Two dynamic Columns) -->
+  <section class="py-6 position-relative" id="contact-form-section">
+    <div class="container-custom">
+      <div class="row g-5 align-items-stretch">
+        
+        <!-- COLUMN 1: SECTION 3 CONTACT FORM -->
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="p-5 border rounded-4 position-relative overflow-hidden" style="background-color: var(--bg-card); border-color: var(--border-color); height: 100%;">
+            
+            <!-- Success Overlay -->
+            <div class="success-overlay-premium" id="contactFormSuccess">
+              <div class="success-icon-animated">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <h3 class="font-display fw-bold mb-2 text-primary">Message Dispatched Successfully</h3>
+              <p class="text-secondary text-xs max-w-400 mx-auto mb-4">
+                Thank you for reaching out. Your transmission has been safely routed to our Sales team. An engineer or account manager will get back to you within 15 minutes.
+              </p>
+              <button onclick="resetPremiumForm('contact')" class="btn-premium py-2 px-4" style="border-radius: 20px;">Send Another Message</button>
+            </div>
+
+            <span class="badge-premium mb-3" style="color: var(--contact-amber); background-color: rgba(217, 119, 6, 0.08);">
+              <i class="fa-solid fa-paper-plane me-1"></i> Interactive Contact Desk
+            </span>
+            <h2 class="display-5 fw-bold font-display text-primary mb-3">Send Us a Message</h2>
+            <p class="text-secondary mb-5">Have unique questions? Submit this form and we'll reply directly to your inbox.</p>
+            
+            <form id="premiumContactForm" class="needs-validation" novalidate>
+              <div class="row g-3">
+                <!-- Name -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_name" class="form-label-premium">Full Name *</label>
+                    <input type="text" id="contact_name" class="form-control-premium" placeholder="e.g. Sarah Connor" required minlength="2">
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please specify your full name.</div>
+                  </div>
+                </div>
+                <!-- Company -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_company" class="form-label-premium">Company Name *</label>
+                    <input type="text" id="contact_company" class="form-control-premium" placeholder="e.g. Cyberdyne Systems" required>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please specify your company name.</div>
+                  </div>
+                </div>
+                <!-- Email -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_email" class="form-label-premium">Business Email *</label>
+                    <input type="email" id="contact_email" class="form-control-premium" placeholder="name@company.com" required>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please enter a valid business email address.</div>
+                  </div>
+                </div>
+                <!-- Phone -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_phone" class="form-label-premium">Phone Number *</label>
+                    <input type="tel" id="contact_phone" class="form-control-premium" placeholder="+1 (555) 000-0000" required pattern="^[\+]?[0-9\s-\(\)]{8,20}$">
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please enter a valid phone number (min 8 digits).</div>
+                  </div>
+                </div>
+                <!-- Country -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_country" class="form-label-premium">Country *</label>
+                    <select id="contact_country" class="form-control-premium" style="appearance: auto;" required>
+                      <option value="" disabled selected>Select country...</option>
+                      <option value="US">United States</option>
+                      <option value="GB">United Kingdom</option>
+                      <option value="CA">Canada</option>
+                      <option value="AU">Australia</option>
+                      <option value="DE">Germany</option>
+                      <option value="FR">France</option>
+                      <option value="JP">Japan</option>
+                      <option value="IN">India</option>
+                      <option value="SG">Singapore</option>
+                      <option value="Other">Other Region</option>
+                    </select>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please select your country of operation.</div>
+                  </div>
+                </div>
+                <!-- Business Size -->
+                <div class="col-md-6">
+                  <div class="form-group-premium">
+                    <label for="contact_size" class="form-label-premium">Business Size *</label>
+                    <select id="contact_size" class="form-control-premium" style="appearance: auto;" required>
+                      <option value="" disabled selected>Select team size...</option>
+                      <option value="1-10">1 - 10 Employees</option>
+                      <option value="11-50">11 - 50 Employees</option>
+                      <option value="51-200">51 - 200 Employees</option>
+                      <option value="201-1000">201 - 1,000 Employees</option>
+                      <option value="1000+">1,000+ Employees (Enterprise)</option>
+                    </select>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please select your current organization size.</div>
+                  </div>
+                </div>
+                <!-- Subject -->
+                <div class="col-12">
+                  <div class="form-group-premium">
+                    <label for="contact_subject" class="form-label-premium">Inquiry Subject *</label>
+                    <select id="contact_subject" class="form-control-premium" style="appearance: auto;" required>
+                      <option value="" disabled selected>What can we help you with?</option>
+                      <option value="sales">Sales &amp; Enterprise Pricing Inquiries</option>
+                      <option value="support">Customer Support &amp; Billing Help</option>
+                      <option value="tech">Technical &amp; CRM Sync Support</option>
+                      <option value="partner">Partnership &amp; Integration Opportunities</option>
+                      <option value="media">Media &amp; Press Coordination</option>
+                      <option value="general">General Corporate Questions</option>
+                    </select>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please choose an inquiry subject category.</div>
+                  </div>
+                </div>
+                <!-- Message -->
+                <div class="col-12">
+                  <div class="form-group-premium">
+                    <label for="contact_message" class="form-label-premium">Your Message *</label>
+                    <textarea id="contact_message" class="form-control-premium" rows="5" placeholder="Specify your current sales architecture, lead volume, or technical requirements..." required minlength="10"></textarea>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please detail your message (minimum 10 characters).</div>
+                  </div>
+                </div>
+                <!-- Checkbox -->
+                <div class="col-12">
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" value="" id="privacy_agree" required style="border-color: var(--border-color); cursor: pointer;">
+                    <label class="form-check-label text-secondary text-xs" for="privacy_agree" style="cursor: pointer; user-select: none;">
+                      I agree to the <a href="404.html" class="text-primary hover-link">Privacy Policy</a> and authorize AuraSales to contact me regarding sales inquiries.
+                    </label>
+                    <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">You must agree to the Privacy Policy to proceed.</div>
+                  </div>
+                </div>
+                <!-- Submit -->
+                <div class="col-12">
+                  <button type="submit" class="btn-premium py-3 px-5 w-100" style="font-family: var(--font-display); font-weight: 700;">
+                    Dispatch Inquiry <i class="fa-solid fa-paper-plane ms-2"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: SECTION 4 BOOK A DEMO -->
+        <div class="col-lg-5" data-aos="fade-left" id="book-demo-section">
+          <div class="demo-card-premium position-relative overflow-hidden d-flex flex-column justify-content-between h-100">
+            
+            <!-- Success Overlay -->
+            <div class="success-overlay-premium" id="demoFormSuccess" style="border-radius: 22px;">
+              <div class="success-icon-animated" style="background-color: rgba(13, 148, 136, 0.1); color: var(--contact-teal);">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <h3 class="font-display fw-bold mb-2 text-primary">Demo Session Confirmed</h3>
+              <p class="text-secondary text-xs max-w-400 mx-auto mb-4">
+                Your direct demonstration slot has been reserved! An automated calendar invitation has been sent to your business inbox. We look forward to analyzing your pipeline strategy.
+              </p>
+              <button onclick="resetPremiumForm('demo')" class="btn-premium py-2 px-4" style="background-color: var(--contact-teal); border-color: var(--contact-teal); border-radius: 20px;">Book Another Slot</button>
+            </div>
+
+            <div>
+              <span class="badge-premium mb-3" style="color: var(--contact-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+                <i class="fa-solid fa-video me-1"></i> Video Showcase
+              </span>
+              <h3 class="font-display fw-bold text-primary mb-2" style="font-size: 1.8rem;">Schedule Interactive Demo</h3>
+              <p class="text-secondary text-xs mb-4">Select a convenient timeline to connect live with a Senior Sales Architect.</p>
+              
+              <form id="premiumDemoForm" class="needs-validation" novalidate>
+                <div class="form-group-premium">
+                  <label for="demo_name" class="form-label-premium">Your Name *</label>
+                  <input type="text" id="demo_name" class="form-control-premium" placeholder="e.g. John Connor" required>
+                  <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please specify your name.</div>
+                </div>
+
+                <div class="form-group-premium">
+                  <label for="demo_email" class="form-label-premium">Business Email *</label>
+                  <input type="email" id="demo_email" class="form-control-premium" placeholder="e.g. john@cyberdyne.com" required>
+                  <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please enter a valid email address.</div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="form-group-premium">
+                      <label for="demo_date" class="form-label-premium">Preferred Date *</label>
+                      <input type="date" id="demo_date" class="form-control-premium" required min="2026-07-15">
+                      <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Select a future date.</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group-premium">
+                      <label for="demo_time" class="form-label-premium">Preferred Time *</label>
+                      <select id="demo_time" class="form-control-premium" style="appearance: auto;" required>
+                        <option value="" disabled selected>Choose Slot...</option>
+                        <option value="09:00">09:00 AM EST</option>
+                        <option value="11:00">11:00 AM EST</option>
+                        <option value="13:00">01:00 PM EST</option>
+                        <option value="15:00">03:00 PM EST</option>
+                        <option value="17:00">05:00 PM EST</option>
+                      </select>
+                      <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please choose a slot.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group-premium">
+                  <label for="demo_company" class="form-label-premium">Company Name *</label>
+                  <input type="text" id="demo_company" class="form-control-premium" placeholder="e.g. Connor Resistance" required>
+                  <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Please specify your company name.</div>
+                </div>
+
+                <div class="form-group-premium">
+                  <label for="demo_teamsize" class="form-label-premium">Team Size *</label>
+                  <select id="demo_teamsize" class="form-control-premium" style="appearance: auto;" required>
+                    <option value="" disabled selected>Choose team size...</option>
+                    <option value="small">1 - 9 members</option>
+                    <option value="mid">10 - 49 members</option>
+                    <option value="large">50+ members</option>
+                  </select>
+                  <div class="invalid-feedback" style="font-size: 0.75rem; color: var(--contact-amber);">Specify team size.</div>
+                </div>
+
+                <button type="submit" class="btn-premium py-3 px-4 w-100 mt-2" style="background-color: var(--contact-teal); border-color: var(--contact-teal); font-family: var(--font-display); font-weight: 700;">
+                  Request Free Demo <i class="fa-solid fa-calendar-check ms-2"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Trust Indicator below -->
+            <div class="mt-4 pt-3 border-top border-color text-center text-secondary text-xs">
+              <i class="fa-solid fa-shield-halved text-success me-1"></i> Secure slot confirmation via TLS encryption.
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIONS 5 & 6: OFFICE LOCATIONS & MAP AREA (Two Columns with interactive highlights) -->
+  <section class="py-6 overflow-hidden" id="locations-section" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--contact-amber); background-color: rgba(217, 119, 6, 0.08);">
+          Global Network
+        </span>
+        <h2 class="display-5 fw-bold font-display text-primary">Office Network &amp; Operations</h2>
+        <p class="text-secondary">Explore physical corporate campuses and immediate support hubs globally. Click any pin or office card to highlight operational status.</p>
+      </div>
+
+      <div class="row g-5 align-items-stretch">
+        <!-- COLUMN 1: SECTION 5 OFFICE LOCATIONS -->
+        <div class="col-lg-5 d-flex flex-column gap-3 justify-content-between" data-aos="fade-right">
+          
+          <!-- Office 1 -->
+          <div class="office-card-premium active-office" id="office-sf" onclick="highlightOffice('sf')">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge mb-2 text-uppercase font-mono" style="font-size: 0.65rem; background-color: rgba(217, 119, 6, 0.08); color: var(--contact-amber); padding: 4px 8px; border-radius: 4px;">Headquarters</span>
+                <h4 class="font-display fw-bold text-primary mb-0" style="font-size: 1.2rem;">San Francisco Campus</h4>
+              </div>
+              <div class="text-end">
+                <span class="text-success font-mono text-xs d-block"><i class="fa-solid fa-circle me-1"></i> Open Now</span>
+                <span class="text-muted font-mono text-xs d-block">PST Zone</span>
+              </div>
+            </div>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-location-dot text-primary me-2"></i> 100 Pine Street, Suite 2400, San Francisco, CA 94111</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-phone text-primary me-2"></i> +1 (415) 555-0199</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-envelope text-primary me-2"></i> sf-headquarters@aurasales.com</p>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <span class="text-secondary text-xs font-mono">Hours: Mon-Fri, 8 AM - 6 PM PST</span>
+              <a href="https://maps.google.com" target="_blank" class="btn-premium-outline btn-sm py-1 px-3" style="border-radius: 20px; font-size: 0.75rem;">Directions <i class="fa-solid fa-map-location-dot ms-1"></i></a>
+            </div>
+          </div>
+
+          <!-- Office 2 -->
+          <div class="office-card-premium" id="office-london" onclick="highlightOffice('london')">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge mb-2 text-uppercase font-mono" style="font-size: 0.65rem; background-color: rgba(13, 148, 136, 0.08); color: var(--contact-teal); padding: 4px 8px; border-radius: 4px;">Regional Campus</span>
+                <h4 class="font-display fw-bold text-primary mb-0" style="font-size: 1.2rem;">London Regional Hub</h4>
+              </div>
+              <div class="text-end">
+                <span class="text-success font-mono text-xs d-block"><i class="fa-solid fa-circle me-1"></i> Open Now</span>
+                <span class="text-muted font-mono text-xs d-block">GMT Zone</span>
+              </div>
+            </div>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-location-dot text-primary me-2"></i> 30 St Mary Axe, The Gherkin, London EC3A 8EP, UK</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-phone text-primary me-2"></i> +44 20 7946 0192</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-envelope text-primary me-2"></i> london-office@aurasales.com</p>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <span class="text-secondary text-xs font-mono">Hours: Mon-Fri, 9 AM - 6 PM GMT</span>
+              <a href="https://maps.google.com" target="_blank" class="btn-premium-outline btn-sm py-1 px-3" style="border-radius: 20px; font-size: 0.75rem;">Directions <i class="fa-solid fa-map-location-dot ms-1"></i></a>
+            </div>
+          </div>
+
+          <!-- Office 3 -->
+          <div class="office-card-premium" id="office-tokyo" onclick="highlightOffice('tokyo')">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge mb-2 text-uppercase font-mono" style="font-size: 0.65rem; background-color: rgba(217, 119, 6, 0.08); color: var(--contact-amber); padding: 4px 8px; border-radius: 4px;">Support Hub</span>
+                <h4 class="font-display fw-bold text-primary mb-0" style="font-size: 1.2rem;">Tokyo Support Center</h4>
+              </div>
+              <div class="text-end">
+                <span class="text-warning font-mono text-xs d-block"><i class="fa-solid fa-circle-notch me-1"></i> Closed (Night)</span>
+                <span class="text-muted font-mono text-xs d-block">JST Zone</span>
+              </div>
+            </div>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-location-dot text-primary me-2"></i> Roppongi Hills Mori Tower, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-phone text-primary me-2"></i> +81 3 5555 0144</p>
+            <p class="text-secondary text-xs mb-3"><i class="fa-solid fa-envelope text-primary me-2"></i> tokyo-support@aurasales.com</p>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <span class="text-secondary text-xs font-mono">Hours: Mon-Fri, 9 AM - 5 PM JST</span>
+              <a href="https://maps.google.com" target="_blank" class="btn-premium-outline btn-sm py-1 px-3" style="border-radius: 20px; font-size: 0.75rem;">Directions <i class="fa-solid fa-map-location-dot ms-1"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLUMN 2: SECTION 6 INTERACTIVE MAP AREA (With fallback SVG map grid illustration) -->
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="map-container-premium d-flex flex-column justify-content-between p-4">
+            
+            <!-- Map background illustration SVG (World grid style) -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.45; pointer-events: none;">
+              <svg width="100%" height="100%" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Abstract grid network -->
+                <path d="M50 50 H950 M50 100 H950 M50 150 H950 M50 200 H950 M50 250 H950 M50 300 H950 M50 350 H950 M50 400 H950 M50 450 H950" stroke="#334155" stroke-width="0.5" stroke-dasharray="3 3"/>
+                <path d="M100 50 V450 M200 50 V450 M300 50 V450 M400 50 V450 M500 50 V450 M600 50 V450 M700 50 V450 M800 50 V450 M900 50 V450" stroke="#334155" stroke-width="0.5" stroke-dasharray="3 3"/>
+                
+                <!-- Stylized abstract continents -->
+                <path d="M120 120 Q180 110 240 130 T320 200 T240 320 T150 250 Z" fill="#1E293B" opacity="0.3"/>
+                <path d="M450 100 Q550 90 600 150 T620 280 T500 350 Z" fill="#1E293B" opacity="0.3"/>
+                <path d="M720 180 Q850 150 880 220 T800 380 Z" fill="#1E293B" opacity="0.3"/>
+                
+                <!-- Connecting high-tech pipeline routes -->
+                <path d="M220 200 Q430 140 600 210 T810 240" stroke="var(--contact-amber)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+              </svg>
+            </div>
+
+            <!-- Top bar indicator on map -->
+            <div class="d-flex justify-content-between align-items-center position-relative" style="z-index: 5;">
+              <span class="text-white font-mono text-xs bg-dark-custom py-1 px-3 border border-secondary rounded-pill" style="background: rgba(15, 23, 42, 0.8);">
+                <i class="fa-solid fa-network-wired text-warning me-2 animate-pulse"></i> DIGITAL INFRASTRUCTURE OVERVIEW
+              </span>
+              <!-- Zoom controls (UI only) -->
+              <div class="d-flex gap-2">
+                <button class="map-zoom-btn" onclick="triggerZoomAlert('+')" aria-label="Zoom In"><i class="fa-solid fa-plus"></i></button>
+                <button class="map-zoom-btn" onclick="triggerZoomAlert('-')" aria-label="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+              </div>
+            </div>
+
+            <!-- Glowing interactive pins absolute positioning -->
+            <!-- SF Head Office (Pin coordinates match SF region on background path approximately) -->
+            <div id="pin-sf" class="map-marker-pin active-pin" style="top: 210px; left: 180px;" onclick="highlightOffice('sf')" title="Click SF Head Office"></div>
+            
+            <!-- London Regional Campus -->
+            <div id="pin-london" class="map-marker-pin" style="top: 170px; left: 490px;" onclick="highlightOffice('london')" title="Click London Campus"></div>
+            
+            <!-- Tokyo Support Hub -->
+            <div id="pin-tokyo" class="map-marker-pin" style="top: 220px; left: 810px;" onclick="highlightOffice('tokyo')" title="Click Tokyo Support Center"></div>
+
+            <!-- Bottom dynamic overlay info card -->
+            <div class="p-3 border border-secondary rounded-3 text-white position-relative" style="z-index: 5; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); max-width: 420px;" id="map-info-popup">
+              <div class="d-flex align-items-center gap-3">
+                <div class="card-icon-wrapper text-warning" style="width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(217, 119, 6, 0.1);">
+                  <i class="fa-solid fa-building-circle-check"></i>
+                </div>
+                <div>
+                  <h5 class="font-display fw-bold mb-1 text-white" id="map-info-title" style="font-size: 1rem;">San Francisco Campus</h5>
+                  <p class="text-secondary mb-0 font-mono" id="map-info-meta" style="font-size: 0.75rem;"><i class="fa-solid fa-shield-halved text-success me-1"></i> Core server node online • PST Time</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: BUSINESS HOURS (Timetable and Response Matrix) -->
+  <section class="py-6 bg-light-sand-theme" id="business-hours-section" style="background-color: var(--bg-card);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--contact-teal); background-color: rgba(13, 148, 136, 0.08);">
+          Reliability Metrics
+        </span>
+        <h2 class="display-5 fw-bold font-display text-primary">Operational Business Hours</h2>
+        <p class="text-secondary">We run a globally synchronized network to guarantee response parameters.</p>
+      </div>
+
+      <div class="row g-4" data-aos="fade-up">
+        
+        <!-- Weekdays -->
+        <div class="col-lg-3 col-md-6">
+          <div class="p-4 rounded-4 border border-color h-100" style="background-color: var(--bg-secondary);">
+            <div class="text-warning mb-3" style="font-size: 1.5rem;"><i class="fa-solid fa-calendar-week"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-1">Weekdays</h5>
+            <p class="text-secondary text-xs mb-3">Monday to Friday schedule</p>
+            <div class="font-mono text-md fw-bold text-primary" style="font-size: 1.15rem;">08:00 AM &ndash; 08:00 PM</div>
+            <span class="text-muted text-xs font-mono d-block mt-1">Eastern Standard Time</span>
+          </div>
+        </div>
+
+        <!-- Weekends -->
+        <div class="col-lg-3 col-md-6">
+          <div class="p-4 rounded-4 border border-color h-100" style="background-color: var(--bg-secondary);">
+            <div class="text-warning mb-3" style="font-size: 1.5rem;"><i class="fa-solid fa-calendar-minus"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-1">Weekends</h5>
+            <p class="text-secondary text-xs mb-3">Saturday and Sunday schedule</p>
+            <div class="font-mono text-md fw-bold text-primary" style="font-size: 1.15rem;">10:00 AM &ndash; 04:00 PM</div>
+            <span class="text-muted text-xs font-mono d-block mt-1">Eastern Standard Time</span>
+          </div>
+        </div>
+
+        <!-- Live Support Hours -->
+        <div class="col-lg-3 col-md-6">
+          <div class="p-4 rounded-4 border border-color h-100" style="background-color: var(--bg-secondary);">
+            <div class="text-warning mb-3" style="font-size: 1.5rem;"><i class="fa-solid fa-circle-nodes"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-1">Live Support Hours</h5>
+            <p class="text-secondary text-xs mb-3">Enterprise priority Slack lines</p>
+            <div class="font-mono text-md fw-bold text-success" style="font-size: 1.15rem;"><i class="fa-solid fa-infinity me-1"></i> 24/7/365 Coverage</div>
+            <span class="text-muted text-xs font-mono d-block mt-1">For SLA contract holders</span>
+          </div>
+        </div>
+
+        <!-- Response Matrix -->
+        <div class="col-lg-3 col-md-6">
+          <div class="p-4 rounded-4 border border-color h-100" style="background-color: var(--bg-secondary);">
+            <div class="text-warning mb-3" style="font-size: 1.5rem;"><i class="fa-solid fa-hourglass-half"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-1">Holiday Support Notice</h5>
+            <p class="text-secondary text-xs mb-3">Response parameters on Federal Holidays</p>
+            <div class="font-mono text-md fw-bold text-primary" style="font-size: 1.15rem;">Slight Delay (< 2 hrs)</div>
+            <span class="text-muted text-xs font-mono d-block mt-1">Core monitoring remains active</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: HELP SHORTCUTS (Never use #) -->
+  <section class="py-6" id="help-shortcuts-section" style="background-color: var(--bg-secondary); border-top: 1.5px solid var(--border-color); border-bottom: 1.5px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--contact-amber); background-color: rgba(217, 119, 6, 0.08);">
+          Self-Service Desk
+        </span>
+        <h2 class="display-5 fw-bold font-display text-primary">Alternative Resolution Hubs</h2>
+        <p class="text-secondary">Skip the email queue entirely. Browse specialized resource systems to resolve queries in seconds.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Help Center -->
+        <div class="col-lg-2-5 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="50">
+          <a href="help-center.html" class="shortcut-card-premium text-center">
+            <div class="text-warning mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-circle-question"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-2" style="font-size: 1rem;">Help Center</h5>
+            <p class="text-secondary text-xs mb-0">Browse structural support databases and quick setup guides.</p>
+          </a>
+        </div>
+
+        <!-- Documentation -->
+        <div class="col-lg-2-5 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+          <a href="docs.html" class="shortcut-card-premium text-center">
+            <div class="text-warning mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-book-open"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-2" style="font-size: 1rem;">Documentation</h5>
+            <p class="text-secondary text-xs mb-0">Read detailed server integration logs and complete API specs.</p>
+          </a>
+        </div>
+
+        <!-- Knowledge Base -->
+        <div class="col-lg-2-5 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+          <a href="knowledge-base.html" class="shortcut-card-premium text-center">
+            <div class="text-warning mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-database"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-2" style="font-size: 1rem;">Knowledge Base</h5>
+            <p class="text-secondary text-xs mb-0">Deep dive articles detailing complex pipeline branches.</p>
+          </a>
+        </div>
+
+        <!-- FAQ -->
+        <div class="col-lg-2-5 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+          <a href="faq.html" class="shortcut-card-premium text-center">
+            <div class="text-warning mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-circle-info"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-2" style="font-size: 1rem;">System FAQs</h5>
+            <p class="text-secondary text-xs mb-0">Get answers to core sales questions, setups &amp; integrations.</p>
+          </a>
+        </div>
+
+        <!-- Community -->
+        <div class="col-lg-2-5 col-md-4 col-sm-6 mx-auto" data-aos="fade-up" data-aos-delay="250">
+          <a href="community.html" class="shortcut-card-premium text-center">
+            <div class="text-warning mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-users"></i></div>
+            <h5 class="font-display fw-bold text-primary mb-2" style="font-size: 1rem;">Community</h5>
+            <p class="text-secondary text-xs mb-0">Engage, share automation loops, and learn from other users.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: TRUST STRIP (With Animated Counters) -->
+  <section class="trust-strip-box overflow-hidden" id="trust-metrics-strip">
+    <div class="container-custom">
+      <div class="row text-center g-4">
+        
+        <div class="col-md-2-4 col-6">
+          <div class="trust-metric-title">24/7 Support</div>
+          <div class="trust-metric-number font-display" id="counter-support" data-target="365">0</div>
+          <p class="text-muted text-xs font-mono mt-1">Days / Year Active</p>
+        </div>
+
+        <div class="col-md-2-4 col-6">
+          <div class="trust-metric-title">Enterprise Security</div>
+          <div class="trust-metric-number font-display">AES-256</div>
+          <p class="text-muted text-xs font-mono mt-1">Bank-Grade Encryption</p>
+        </div>
+
+        <div class="col-md-2-4 col-6">
+          <div class="trust-metric-title">Fast Response</div>
+          <div class="trust-metric-number font-display" id="counter-response" data-target="15">&lt; 0m</div>
+          <p class="text-muted text-xs font-mono mt-1">Average Turnaround</p>
+        </div>
+
+        <div class="col-md-2-4 col-6">
+          <div class="trust-metric-title">Global Customers</div>
+          <div class="trust-metric-number font-display" id="counter-customers" data-target="500">0+</div>
+          <p class="text-muted text-xs font-mono mt-1">Enterprise Pipelines</p>
+        </div>
+
+        <div class="col-md-2-4 col-12 mx-auto">
+          <div class="trust-metric-title">Customer Satisfaction</div>
+          <div class="trust-metric-number font-display" id="counter-csat" data-target="98.8">0%</div>
+          <p class="text-muted text-xs font-mono mt-1">Highly Rated Reviews</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: FINAL CTA -->
+  <section class="py-6 overflow-hidden position-relative" id="contact-final-cta" style="background-color: var(--bg-card); border-top: 1.5px solid var(--border-color);">
+    <div class="cta-bg-decor" style="opacity: 0.15; top: 0; left: 0;"></div>
+    <div class="container-custom text-center position-relative" style="z-index: 2;" data-aos="fade-up">
+      <span class="badge-premium mb-3" style="color: var(--contact-amber); background-color: rgba(217, 119, 6, 0.08);">
+        <i class="fa-solid fa-sparkles me-1"></i> Start Scaling Today
+      </span>
+      <h2 class="display-4 fw-bold font-display text-primary mb-4" style="letter-spacing: -0.02em; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Ready to Transform Your Sales Process?
+      </h2>
+      <p class="text-secondary max-w-600 mx-auto mb-5" style="font-size: 1.1rem; line-height: 1.7;">
+        Configure your outbound vectors, activate predictive lead scores, and orchestrate client responses inside a unified corporate dashboard. Joining takes under two minutes.
+      </p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="signup.html" class="btn-premium py-3 px-5" style="font-family: var(--font-display); font-weight: 700; border-radius: 30px;">
+          Start Free Trial <i class="fa-solid fa-bolt ms-2"></i>
+        </a>
+        <button onclick="scrollToSection('contact-form-section')" class="btn-premium-outline py-3 px-5" style="font-family: var(--font-display); font-weight: 700; border-radius: 30px;">
+          Talk to Sales <i class="fa-solid fa-headset ms-2"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Reusable Footer -->
+  <footer class="site-footer" style="background-color: var(--bg-card); border-top: 1.5px solid var(--border-color); padding: 80px 0 40px 0;">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand mb-3 d-inline-flex" href="index.html">
+            <i class="fa-solid fa-brain brand-icon me-2"></i>
+            <span>AuraSales</span>
+          </a>
+          <p class="text-secondary text-xs" style="max-width: 320px; line-height: 1.7;">
+            Premium sales outreach, customer intelligence, and conversation workflow automation driven by high-efficiency AI layers.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title font-display fw-bold" style="font-size: 0.95rem; color: var(--text-primary);">Platform</h5>
+          <ul class="footer-links list-unstyled d-flex flex-column gap-2 text-xs">
+            <li><a href="features.html" class="text-secondary hover-link">Features</a></li>
+            <li><a href="solutions.html" class="text-secondary hover-link">Solutions</a></li>
+            <li><a href="integrations.html" class="text-secondary hover-link">Integrations</a></li>
+            <li><a href="pricing.html" class="text-secondary hover-link">Pricing Structure</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title font-display fw-bold" style="font-size: 0.95rem; color: var(--text-primary);">Resources</h5>
+          <ul class="footer-links list-unstyled d-flex flex-column gap-2 text-xs">
+            <li><a href="blog.html" class="text-secondary hover-link">Industry Blog</a></li>
+            <li><a href="faq.html" class="text-secondary hover-link">System FAQs</a></li>
+            <li><a href="contact.html" class="text-secondary hover-link active">Contact Hub</a></li>
+            <li><a href="404.html" class="text-secondary hover-link">Status Center</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="footer-title font-display fw-bold" style="font-size: 0.95rem; color: var(--text-primary);">Access Console</h5>
+          <p class="text-secondary text-xs mb-3" style="line-height: 1.6;">Launch into our secure portal to monitor conversions, pipeline activity, and active automation tasks.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="login.html" class="btn-premium-outline btn-sm py-2 px-3 text-xs" style="border-radius: 20px;">Launch Console</a>
+            <a href="signup.html" class="btn-premium btn-sm py-2 px-3 text-xs" style="border-radius: 20px;">Join Workspace</a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5" style="border-color: var(--border-color)">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <p class="text-muted mb-0 text-xs">&copy; 2026 AuraSales Inc. All rights reserved.</p>
+        <div class="d-flex gap-4">
+          <a href="404.html" class="text-muted text-xs hover-link">Terms of Service</a>
+          <a href="404.html" class="text-muted text-xs hover-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 6. Back To Top Button -->
+  <div id="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- CDN Script Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom Executable Main Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+
+  <!-- Interactive Vanilla JS Logic for Phase 25 -->
+  <script>
+    // Smooth scrolling to section anchor
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Direct routing function: Preselects dropdown subject item based on contact option clicked
+    function fillSubjectAndScroll(category) {
+      const subjectSelect = document.getElementById('contact_subject');
+      if (subjectSelect) {
+        subjectSelect.value = category;
+      }
+      scrollToSection('contact-form-section');
+    }
+
+    // Interactive map popup details data
+    const officeDetails = {
+      sf: {
+        title: "San Francisco Campus",
+        meta: "<i class='fa-solid fa-shield-halved text-success me-1'></i> Core server node online • PST Time",
+        cardId: "office-sf",
+        pinId: "pin-sf"
+      },
+      london: {
+        title: "London Regional Hub",
+        meta: "<i class='fa-solid fa-shield-halved text-success me-1'></i> Secondary database active • GMT Time",
+        cardId: "office-london",
+        pinId: "pin-london"
+      },
+      tokyo: {
+        title: "Tokyo Support Center",
+        meta: "<i class='fa-solid fa-circle-notch text-warning me-1'></i> Idle backup standby • JST Time",
+        cardId: "office-tokyo",
+        pinId: "pin-tokyo"
+      }
+    };
+
+    // Global office highlight action
+    function highlightOffice(officeKey) {
+      // Reset card visual highlights
+      document.querySelectorAll('.office-card-premium').forEach(card => {
+        card.classList.remove('active-office');
+      });
+      // Reset map marker highlights
+      document.querySelectorAll('.map-marker-pin').forEach(pin => {
+        pin.classList.remove('active-pin');
+      });
+
+      const selectedOffice = officeDetails[officeKey];
+      if (selectedOffice) {
+        // Highlight active card
+        const card = document.getElementById(selectedOffice.cardId);
+        if (card) {
+          card.classList.add('active-office');
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Highlight active pin
+        const pin = document.getElementById(selectedOffice.pinId);
+        if (pin) pin.classList.add('active-pin');
+
+        // Update map popup description
+        document.getElementById('map-info-title').innerText = selectedOffice.title;
+        document.getElementById('map-info-meta').innerHTML = selectedOffice.meta;
+      }
+    }
+
+    // Interactive UI Zoom Button Handler
+    function triggerZoomAlert(direction) {
+      console.log("Zoom " + direction + " requested on interactive SVG map blueprint.");
+      // Micro animation bounce on the popup panel
+      const popup = document.getElementById('map-info-popup');
+      if (popup) {
+        popup.style.transform = 'scale(1.03)';
+        setTimeout(() => { popup.style.transform = 'scale(1)'; }, 150);
+      }
+    }
+
+    // Form handlers (Frontend validation & Success State switching)
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Contact Form Submit Validation
+      const contactForm = document.getElementById('premiumContactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          
+          if (contactForm.checkValidity()) {
+            // Show Success Overlay state
+            const successOverlay = document.getElementById('contactFormSuccess');
+            if (successOverlay) {
+              successOverlay.classList.add('active');
+            }
+          }
+          contactForm.classList.add('was-validated');
+        }, false);
+      }
+
+      // 2. Demo Form Submit Validation
+      const demoForm = document.getElementById('premiumDemoForm');
+      if (demoForm) {
+        demoForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          
+          if (demoForm.checkValidity()) {
+            // Show Success Overlay state
+            const successOverlay = document.getElementById('demoFormSuccess');
+            if (successOverlay) {
+              successOverlay.classList.add('active');
+            }
+          }
+          demoForm.classList.add('was-validated');
+        }, false);
+      }
+
+      // Initialize counter animations on load
+      initializeCounters();
+    });
+
+    // Reset Form wrapper function
+    function resetPremiumForm(type) {
+      if (type === 'contact') {
+        const contactForm = document.getElementById('premiumContactForm');
+        const successOverlay = document.getElementById('contactFormSuccess');
+        if (contactForm && successOverlay) {
+          contactForm.reset();
+          contactForm.classList.remove('was-validated');
+          successOverlay.classList.remove('active');
+        }
+      } else if (type === 'demo') {
+        const demoForm = document.getElementById('premiumDemoForm');
+        const successOverlay = document.getElementById('demoFormSuccess');
+        if (demoForm && successOverlay) {
+          demoForm.reset();
+          demoForm.classList.remove('was-validated');
+          successOverlay.classList.remove('active');
+        }
+      }
+    }
+
+    // Trust Strip Metrics Counters Incrementor logic
+    function initializeCounters() {
+      const counters = [
+        { id: 'counter-support', target: 365, suffix: ' Days' },
+        { id: 'counter-response', target: 15, suffix: ' Min Avg', prefix: '< ' },
+        { id: 'counter-customers', target: 500, suffix: '+ Clients' },
+        { id: 'counter-csat', target: 98.8, suffix: '% Rating', step: 1.2 }
+      ];
+
+      counters.forEach(counter => {
+        const el = document.getElementById(counter.id);
+        if (!el) return;
+
+        let current = 0;
+        const target = counter.target;
+        const duration = 1200; // Total ms for animation
+        const stepTime = 30;
+        const totalSteps = duration / stepTime;
+        const increment = target / totalSteps;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          
+          // Render formatting
+          let formattedValue = current;
+          if (target % 1 !== 0) {
+            formattedValue = current.toFixed(1); // Keep float decimals
+          } else {
+            formattedValue = Math.floor(current);
+          }
+          
+          el.innerText = (counter.prefix || '') + formattedValue + counter.suffix;
+        }, stepTime);
+      });
+    }
+  </script>
+</body>
+</html>

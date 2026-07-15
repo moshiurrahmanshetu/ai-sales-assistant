@@ -1,0 +1,109 @@
+/* 
+   ================================================================
+   PREMIUM AI SALES ASSISTANT - RESPONSIVE STYLES (responsive.css)
+   ================================================================
+*/
+
+/* Extra Large Screens / Ultra-wide Control */
+@media (min-width: 1601px) {
+  .container-custom {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+/* Laptops & Desktop adjustments (1200px to 1600px) */
+@media (max-width: 1400px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .container-custom {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Medium Laptops & Tablets (992px to 1199px) */
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Mobile & Small Tablets / Navigation Collapse (up to 991px) */
+@media (max-width: 991px) {
+  .container-custom {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  /* Mobile Navigation Drawer Effect */
+  .navbar-collapse {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+  
+  .nav-link {
+    padding: 10px 16px !important;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+/* Tablets (up to 768px) */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .breadcrumb-section {
+    padding: 35px 0;
+  }
+  
+  .breadcrumb-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Large Mobiles (up to 576px) */
+@media (max-width: 575px) {
+  .container-custom {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .btn-premium, .btn-premium-outline {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .site-header {
+    padding: 10px 0;
+  }
+}
+
+/* Landscape / Small Mobiles (up to 400px) */
+@media (max-width: 400px) {
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,55 @@
+/* 
+   ================================================================
+   PREMIUM AI SALES ASSISTANT - DARK THEME VARIABLES (dark.css)
+   ================================================================
+*/
+
+body.dark-mode {
+  /* Color Palette - Dark Mode (Slate & Charcoal Luxury) */
+  --bg-primary: #0F1110;       /* Rich Charcoal Black */
+  --bg-secondary: #171918;     /* Slightly lighter charcoal */
+  --bg-card: #1C1F1D;          /* Soft slate dark card */
+  --text-primary: #F4F3EF;     /* Warm white / light sand */
+  --text-secondary: #B9C0BD;   /* Light slate gray */
+  --text-muted: #717A76;       /* Darker muted slate */
+  
+  --accent-primary: #F59E0B;   /* Vibrant Amber / Gold */
+  --accent-hover: #D97706;     /* Darker Amber */
+  --accent-emerald: #10B981;   /* Vibrant Emerald */
+  --accent-teal: #14B8A6;      /* Vibrant Teal */
+  
+  --border-color: #282C29;     /* Subtle dark border */
+  --border-glow: rgba(245, 158, 11, 0.2);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Deep Header Glassmorphism Override for Dark Mode */
+body.dark-mode .site-header {
+  background-color: rgba(15, 17, 16, 0.85);
+}
+body.dark-mode .site-header.scrolled {
+  background-color: rgba(15, 17, 16, 0.96);
+}
+
+/* Custom styles for select option elements in dark mode to ensure clear visibility */
+body.dark-mode select.select-premium option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+/* Accordion Arrow Fix for Dark Mode */
+body.dark-mode .accordion-premium .accordion-button::after {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* Input Fields Overrides */
+body.dark-mode .form-control-premium {
+  background-color: #171918;
+}
+
+/* Modal Content Dark Theme Overrides */
+body.dark-mode .modal-content-premium {
+  background-color: var(--bg-card);
+}

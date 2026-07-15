@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Features - AuraSales</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS Library CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Zero-Flicker Head Theme Script -->
+  <script src="js/theme.js"></script>
+  
+  <!-- Custom Compiled Stylesheet Layers -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 1. Global Preloader Loader -->
+  <div id="global-loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- 2. Sticky Header Placeholder -->
+  <header class="site-header">
+    <div class="container-custom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <i class="fa-solid fa-brain brand-icon me-2"></i>
+          <span>AuraSales</span>
+        </a>
+
+        <!-- Desktop Menu Items (Visible only on lg and above) -->
+        <div class="collapse navbar-collapse d-none d-lg-block flex-grow-0" id="desktopNavbar">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+                Resources <i class="fa-solid fa-chevron-down dropdown-toggle-icon"></i>
+              </a>
+              <div class="dropdown-menu-premium" aria-labelledby="resourcesDropdown">
+                <a class="dropdown-item-premium" href="blog.html">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <span>Blog</span>
+                </a>
+                <a class="dropdown-item-premium" href="faq.html">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span>FAQ</span>
+                </a>
+                <a class="dropdown-item-premium" href="contact.html">
+                  <i class="fa-solid fa-headset"></i>
+                  <span>Contact</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side Controls (Desktop) -->
+        <div class="d-none d-lg-flex align-items-center gap-4">
+          <!-- Theme Toggle -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggle">
+              <input type="checkbox" id="themeToggle" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Login -->
+          <a href="login.html" class="btn-premium-outline btn-sm py-2 px-4" style="border-radius: 30px;">Login</a>
+          <!-- Get Started -->
+          <a href="signup.html" class="btn-premium btn-sm py-2 px-4" style="border-radius: 30px;">Get Started</a>
+        </div>
+
+        <!-- Mobile Menu Trigger & Switch (Visible below lg) -->
+        <div class="d-flex d-lg-none align-items-center gap-3">
+          <!-- Theme Toggle (Always accessible) -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggleMobile">
+              <input type="checkbox" id="themeToggleMobile" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Hamburger Toggle Button -->
+          <button class="hamburger-toggle" id="mobileMenuOpen" aria-label="Open Mobile Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Premium Offcanvas Mobile Menu Drawer -->
+  <div class="offcanvas-overlay" id="mobileMenuOverlay"></div>
+  <div class="offcanvas-menu" id="mobileMenuDrawer">
+    <div class="offcanvas-header">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-brain brand-icon me-2"></i>
+        <span>AuraSales</span>
+      </a>
+      <button class="offcanvas-close" id="mobileMenuClose" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-nav-links">
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="index.html">Home</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="features.html">Features</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="solutions.html">Solutions</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="pricing.html">Pricing</a></li>
+        <li class="offcanvas-nav-item">
+          <div class="offcanvas-link mb-2">Resources</div>
+          <ul class="offcanvas-submenu">
+            <li><a class="offcanvas-submenu-link" href="blog.html"><i class="fa-solid fa-newspaper me-2 opacity-75"></i> Blog</a></li>
+            <li><a class="offcanvas-submenu-link" href="faq.html"><i class="fa-solid fa-circle-question me-2 opacity-75"></i> FAQ</a></li>
+            <li><a class="offcanvas-submenu-link" href="contact.html"><i class="fa-solid fa-headset me-2 opacity-75"></i> Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="offcanvas-footer mt-auto">
+        <a href="login.html" class="btn-premium-outline w-full justify-content-center py-3">Login</a>
+        <a href="signup.html" class="btn-premium w-full justify-content-center py-3">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECTION 1: PAGE HERO -->
+  <section class="product-hero-section py-6 overflow-hidden position-relative">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="row align-items-center g-5">
+        <!-- Hero Copy -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+            <i class="fa-solid fa-sparkles me-1"></i> Feature Deep Dive
+          </span>
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0" style="font-size: 0.85rem; font-family: var(--font-mono);">
+              <li class="breadcrumb-item"><a href="index.html" class="text-secondary hover-link">Home</a></li>
+              <li class="breadcrumb-item text-primary active" aria-current="page">Features</li>
+            </ol>
+          </nav>
+          <h1 class="display-3 fw-bold tracking-tight mb-4 font-display" style="letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary);">
+            Powerful AI Features
+          </h1>
+          <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.7; max-width: 620px;">
+            Explore the specialized algorithmic layers, real-time routing engines, and multi-channel workflows designed to scale enterprise pipeline production automatically.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="signup.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Start Free Trial <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="demo.html" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+              Book Demo <i class="fa-solid fa-desktop"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Illustration -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <div class="position-relative" style="height: 380px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="cta-glow-blur" style="top: -10%; right: 5%;"></div>
+            <div class="cta-grid-overlay"></div>
+            
+            <!-- Animated Floating Badges -->
+            <div class="floating-badge badge-warning-custom" style="top: 20%; left: 8%;">
+              <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Multi-Channel Delivery
+            </div>
+            <div class="floating-badge badge-emerald-custom" style="bottom: 20%; right: 10%; animation-delay: 1.4s;">
+              <i class="fa-solid fa-bolt me-1"></i> Automated Booking (100%)
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SaaS Outbound Outpost Outbound Sales Dashboard representation illustration" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: STICKY FEATURE NAVIGATION -->
+  <nav class="sticky-feature-nav">
+    <div class="container-custom">
+      <div class="feature-nav-tabs">
+        <a href="#ai-assistant" class="feature-nav-btn active" onclick="highlightTab(this)">AI Assistant</a>
+        <a href="#lead-qualification" class="feature-nav-btn" onclick="highlightTab(this)">Sales Automation</a>
+        <a href="#crm-sync" class="feature-nav-btn" onclick="highlightTab(this)">CRM Sync</a>
+        <a href="#meeting-booking" class="feature-nav-btn" onclick="highlightTab(this)">Meeting Booking</a>
+        <a href="#email-automation" class="feature-nav-btn" onclick="highlightTab(this)">Email Automation</a>
+        <a href="#sales-analytics" class="feature-nav-btn" onclick="highlightTab(this)">Analytics</a>
+        <a href="#team-collaboration" class="feature-nav-btn" onclick="highlightTab(this)">Team &amp; Workspace</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 3 & 4: CORE FEATURE ALTERNATING SHOWCASE WITH INTERACTIVE DEMOS -->
+  
+  <!-- Showcase 1: AI Sales Assistant -->
+  <section id="ai-assistant" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Content Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08);">
+            Conversational SDR
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">AI Sales Assistant</h2>
+          <p class="text-secondary mb-4">
+            Engages visitors in hyper-contextual conversations, instantly addressing complex enterprise objections, reviewing pricing plans, and explaining product architectures dynamically.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Fine-tuned on millions of sales objections structures.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> 12-second conversational median answer time.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Generative security barriers to isolate credentials.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">AHR Speed</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">&lt; 15 seconds</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Confidence Score</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">99.4% Match</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Deploy AI Assistant</a>
+        </div>
+
+        <!-- Interactive Chat Simulator Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <div class="interactive-ui-preview d-flex flex-column justify-content-between">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">AuraSales SDR Sandbox</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">CHIP TRIGGERS &bull; PLAYGROUND</span>
+              </div>
+              <span class="badge bg-success-subtle text-success font-mono" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); border: 1px solid rgba(5, 150, 105, 0.15); color: var(--accent-emerald) !important;">Agent Active</span>
+            </div>
+
+            <!-- Dialogue History -->
+            <div class="mini-chat-ui flex-grow-1 mb-3" id="sandbox-chat-history" style="min-height: 180px;">
+              <div class="mini-chat-bubble bot">
+                Hi! Ask me anything regarding AuraSales. You can select one of the core chips below to watch how I address enterprise objections in real-time.
+              </div>
+            </div>
+
+            <!-- Chips container -->
+            <div class="pt-2 border-top" style="border-color: var(--border-color) !important;">
+              <span class="d-block text-muted font-mono mb-2" style="font-size: 0.65rem; text-transform: uppercase;">Select Objection Scenario</span>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-xs btn-outline-secondary py-1 px-2 border font-mono" style="font-size: 0.72rem; border-radius: 20px;" onclick="triggerSdrDialogue('pricing')">
+                  <i class="fa-solid fa-coins me-1 text-warning"></i> "Is it too expensive?"
+                </button>
+                <button class="btn btn-xs btn-outline-secondary py-1 px-2 border font-mono" style="font-size: 0.72rem; border-radius: 20px;" onclick="triggerSdrDialogue('integration')">
+                  <i class="fa-solid fa-arrows-spin me-1 text-teal"></i> "Sync lag support?"
+                </button>
+                <button class="btn btn-xs btn-outline-secondary py-1 px-2 border font-mono" style="font-size: 0.72rem; border-radius: 20px;" onclick="triggerSdrDialogue('security')">
+                  <i class="fa-solid fa-shield-halved me-1 text-success"></i> "Compliance standard?"
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 2: Lead Qualification -->
+  <section id="lead-qualification" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Interactive BANT Simulator Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <div class="interactive-ui-preview">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">BANT Scorecard Engine</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">TOGGLE CRITERIA TO TEST SCORE</span>
+              </div>
+              <span class="badge bg-warning-subtle text-warning font-mono" style="font-size: 0.65rem; background: rgba(217, 119, 6, 0.08); border: 1px solid rgba(217, 119, 6, 0.15); color: var(--accent-primary) !important;">Evaluating</span>
+            </div>
+
+            <!-- Scoring Area -->
+            <div class="text-center py-3">
+              <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Lead Quality Index</span>
+              <div class="display-4 fw-bold font-display text-warning" id="bant-score-display" style="color: var(--accent-primary) !important;">75%</div>
+              <span class="badge bg-success-subtle text-success font-mono mt-1" id="bant-status-badge" style="font-size: 0.72rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">WARM PROSPECT</span>
+            </div>
+
+            <!-- BANT Grid -->
+            <div class="mt-2">
+              <div class="bant-row">
+                <div>
+                  <input type="checkbox" id="bant-b" class="form-check-input me-2" checked onchange="recalculateBant()">
+                  <strong>Budget:</strong> <span class="text-muted">Enterprise segment ($50k+) validated</span>
+                </div>
+                <span class="bant-status-pill text-success" style="background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important;">Passed</span>
+              </div>
+              <div class="bant-row">
+                <div>
+                  <input type="checkbox" id="bant-a" class="form-check-input me-2" checked onchange="recalculateBant()">
+                  <strong>Authority:</strong> <span class="text-muted">GTM Decision Maker / Director level</span>
+                </div>
+                <span class="bant-status-pill text-success" style="background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important;">Passed</span>
+              </div>
+              <div class="bant-row">
+                <div>
+                  <input type="checkbox" id="bant-n" class="form-check-input me-2" checked onchange="recalculateBant()">
+                  <strong>Need:</strong> <span class="text-muted">Manual outbound limitations identified</span>
+                </div>
+                <span class="bant-status-pill text-success" style="background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important;">Passed</span>
+              </div>
+              <div class="bant-row">
+                <div>
+                  <input type="checkbox" id="bant-t" class="form-check-input me-2" onchange="recalculateBant()">
+                  <strong>Timeline:</strong> <span class="text-muted">Execution window not yet finalized</span>
+                </div>
+                <span class="bant-status-pill text-warning" id="timeline-status-pill" style="background: rgba(217, 119, 6, 0.08); color: var(--accent-primary) !important;">Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08);">
+            Screening Precision
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Automatic Lead Qualification</h2>
+          <p class="text-secondary mb-4">
+            Filter out low-fit submissions before your sales reps spend hours on exploratory calendar calls. AuraSales queries corporate profiles, estimates budgets, and scores timeline expectations automatically.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Dynamic BANT categorization on every single dialogue.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Enrichment integration checks corporate metrics.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Disqualification triggers keep pipeline space clean.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Filter Efficiency</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">84% unqualified cut</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Rep Focus Increase</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">+3.2x more pipeline</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Deploy Qualification</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 3: CRM Sync -->
+  <section id="crm-sync" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Content Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08);">
+            Perfect Synchronization
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Bidirectional CRM Sync</h2>
+          <p class="text-secondary mb-4">
+            Never lose conversation context or details. AuraSales updates records, logs positive objections, documents scheduled discovery dates, and synchronizes custom attributes back into your systems of record with zero-lag integrity.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Native bidirectional Salesforce &amp; HubSpot sync.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Logs chat history and transcripts directly.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Enriches profile metadata using clear firmographic APIs.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Sync latency</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">&lt; 50ms (Real-time)</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Data Completeness</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">100% updated</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Configure Integrations</a>
+        </div>
+
+        <!-- CRM Sync Ticker Simulator Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <div class="interactive-ui-preview">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Real-Time Sync Stream</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">SYSTEMS INTEGRATION MONITOR</span>
+              </div>
+              <span class="badge bg-success-subtle text-success font-mono" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">
+                <span class="spinner-grow spinner-grow-sm me-1" role="status" style="width: 8px; height: 8px; color: var(--accent-emerald);"></span> Connected
+              </span>
+            </div>
+
+            <!-- Sync Live Logs -->
+            <div class="crm-sync-list" id="crm-sync-logger" style="height: 220px; overflow-y: hidden;">
+              <div class="crm-sync-item">
+                <i class="fa-solid fa-arrows-spin text-teal" style="color: var(--accent-teal);"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.8rem; color: var(--text-primary);">HubSpot pipeline update</strong>
+                  <span class="font-mono text-muted d-block" style="font-size: 0.68rem;">Prospect Stage set to: High Intent Qualified</span>
+                </div>
+                <span class="ms-auto text-muted font-mono" style="font-size: 0.65rem;">Just Now</span>
+              </div>
+              <div class="crm-sync-item">
+                <i class="fa-solid fa-envelope-open-text text-warning" style="color: var(--accent-primary);"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.8rem; color: var(--text-primary);">Email Transcript Logged</strong>
+                  <span class="font-mono text-muted d-block" style="font-size: 0.68rem;">Recorded pricing inquiry reply sequence</span>
+                </div>
+                <span class="ms-auto text-muted font-mono" style="font-size: 0.65rem;">12s ago</span>
+              </div>
+              <div class="crm-sync-item">
+                <i class="fa-solid fa-cloud-arrow-up text-success" style="color: var(--accent-emerald);"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.8rem; color: var(--text-primary);">Salesforce Contact Enrichment</strong>
+                  <span class="font-mono text-muted d-block" style="font-size: 0.68rem;">Added firmographic revenue metric: $120M ARR</span>
+                </div>
+                <span class="ms-auto text-muted font-mono" style="font-size: 0.65rem;">1m ago</span>
+              </div>
+            </div>
+
+            <!-- Manual Trigger bar -->
+            <div class="mt-3 text-end pt-2 border-top" style="border-color: var(--border-color) !important;">
+              <button class="btn btn-sm btn-outline-secondary font-mono" style="font-size: 0.72rem;" onclick="addSyncMockLog()">
+                <i class="fa-solid fa-plus me-1 text-teal"></i> Trigger Simulation Event
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 4: Meeting Booking -->
+  <section id="meeting-booking" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Interactive Calendar Picker Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <div class="interactive-ui-preview">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Interactive Calendar Scheduler</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">CHOOSE AN AVAILABLE SLOT</span>
+              </div>
+              <span class="badge bg-success-subtle text-success font-mono" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">6 Slots Available</span>
+            </div>
+
+            <div class="p-2 text-center">
+              <span class="d-block font-display fw-bold" style="font-size: 0.92rem; color: var(--text-primary);">July 2026 - SDR Availability Matrix</span>
+              <p class="text-muted font-mono" style="font-size: 0.72rem; margin-bottom: 8px;">Auto-synchronized with Google Calendar &amp; Outlook</p>
+            </div>
+
+            <!-- Booking Slots Grid -->
+            <div class="calendar-sim-grid">
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 18, 10:00 AM PST')">10:00 AM</div>
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 18, 11:30 AM PST')">11:30 AM</div>
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 18, 1:00 PM PST')">1:00 PM</div>
+              <div class="calendar-sim-slot booked">Booked</div>
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 19, 9:00 AM PST')">9:00 AM</div>
+              <div class="calendar-sim-slot booked">Booked</div>
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 19, 2:30 PM PST')">2:30 PM</div>
+              <div class="calendar-sim-slot" onclick="selectCalendarSlot(this, 'July 19, 4:00 PM PST')">4:00 PM</div>
+            </div>
+
+            <!-- Booking Popup simulate -->
+            <div class="mt-3 p-3 border rounded text-center d-none" id="booking-confirmation-toast" style="background: rgba(5, 150, 105, 0.04); border-color: rgba(5, 150, 105, 0.25) !important;">
+              <i class="fa-solid fa-circle-check text-success mb-1" style="font-size: 1.25rem;"></i>
+              <strong class="d-block font-display text-sm text-success" style="color: var(--accent-emerald) !important;">Meeting Scheduled Successfully!</strong>
+              <span class="font-mono text-muted" id="booking-confirmed-time" style="font-size: 0.72rem;">July 18, 10:00 AM PST</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08);">
+            SDR Routing Engine
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Autonomous Meeting Booking</h2>
+          <p class="text-secondary mb-4">
+            AuraSales operates inside your prospect's timeframe and schedules enterprise discovery calls instantly. Our booking system integrates with rep calendars, checks timezone layouts, and sends direct invites.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Intelligent multi-calendar coordination routines.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Instant calendar invite delivery and updates.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> 100% autonomous calendar validation checks.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Average Bookings</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">+240% bookings</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Timezone Coverage</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">24/7 Global</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Deploy Calendar Sync</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 5: Email Automation -->
+  <section id="email-automation" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Content Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08);">
+            Outbound Delivery
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Intelligent Email Sequences</h2>
+          <p class="text-secondary mb-4">
+            Configure automated multi-step pathways that execute with absolute organic spacing. AuraSales writes high-quality follow-ups, handles replies, and optimizes your outreach dynamically to dodge email spam filters.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Personalized templates auto-generated from metadata.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Organic delay intervals matching human pacing.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-teal" style="color: var(--accent-teal);"></i> Direct SPF / DKIM verification setup.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Open Rates</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">72% average</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Delivery Score</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">99.1% Inbox</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Create Email Campaign</a>
+        </div>
+
+        <!-- Interactive Email Builder Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <div class="interactive-ui-preview">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Email Sequence Architect</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">CONFIGURE STEPS AND COGNITIVE TIME</span>
+              </div>
+              <span class="badge bg-warning-subtle text-warning font-mono" style="font-size: 0.65rem; background: rgba(217, 119, 6, 0.08); color: var(--accent-primary) !important;">Pulsing flow</span>
+            </div>
+
+            <!-- Email Editor Form -->
+            <div class="email-sim-editor">
+              <div class="mb-2">
+                <span class="text-muted font-mono d-block" style="font-size: 0.68rem;">Subject Title Pattern</span>
+                <input type="text" class="form-control form-control-sm border font-mono bg-transparent" style="color: var(--text-primary); font-size: 0.75rem;" value="Improving outbound performance & pipeline updates at {{company_name}}">
+              </div>
+              <div>
+                <span class="text-muted font-mono d-block" style="font-size: 0.68rem;">Email Body Content</span>
+                <textarea class="form-control form-control-sm border bg-transparent" style="color: var(--text-primary); font-size: 0.75rem; min-height: 70px;" readonly>Hi {{first_name}}, I noticed your sales team is updating Salesforce pipelines manually. AuraSales automates this context in real-time, boosting rep time by 3.2x. Do you have a few minutes this week?</textarea>
+              </div>
+            </div>
+
+            <!-- Sequence interval toggle -->
+            <div class="mt-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-muted font-mono" style="font-size: 0.68rem; text-transform: uppercase;">Sequence Delay Interval</span>
+                <select class="form-select form-select-sm font-mono border bg-transparent" style="width: auto; font-size: 0.75rem; color: var(--text-primary);" onchange="updateSequenceDelay(this)">
+                  <option value="1">Wait 1 Day (Quick Follow-up)</option>
+                  <option value="3" selected>Wait 3 Days (Organic pacing)</option>
+                  <option value="5">Wait 5 Days (Soft Outreach)</option>
+                </select>
+              </div>
+
+              <!-- Workflow status nodes -->
+              <div class="d-flex align-items-center justify-content-around bg-light-sand p-2 rounded mt-2 border" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                <div class="text-center font-mono" style="font-size: 0.7rem;">
+                  <strong class="d-block text-success" style="color: var(--accent-emerald) !important;">Step 1</strong>
+                  <span>Intro sent</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-muted" style="font-size: 0.75rem;"></i>
+                <div class="text-center font-mono" style="font-size: 0.7rem;">
+                  <strong class="d-block text-warning" style="color: var(--accent-primary) !important;">Interval</strong>
+                  <span id="sequence-delay-label">Wait 3 Days</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-muted" style="font-size: 0.75rem;"></i>
+                <div class="text-center font-mono text-muted" style="font-size: 0.7rem;">
+                  <strong class="d-block">Step 2</strong>
+                  <span>Follow-up queue</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 6: Sales Analytics -->
+  <section id="sales-analytics" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Interactive Analytics Chart Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <div class="interactive-ui-preview d-flex flex-column justify-content-between">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Conversion Analytics</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">LIVE CAMPAIGN INSIGHTS</span>
+              </div>
+              <div class="d-flex gap-1">
+                <button class="btn btn-xs btn-outline-secondary py-1 px-2 border font-mono active" style="font-size: 0.65rem;" onclick="toggleChartTimeframe('weekly', this)">Weekly</button>
+                <button class="btn btn-xs btn-outline-secondary py-1 px-2 border font-mono" style="font-size: 0.65rem;" onclick="toggleChartTimeframe('monthly', this)">Monthly</button>
+              </div>
+            </div>
+
+            <!-- Total stats counter -->
+            <div class="d-flex justify-content-between align-items-center p-2 rounded mb-3 border bg-light-sand" style="background: var(--bg-secondary); border-color: var(--border-color);">
+              <div>
+                <span class="text-muted font-mono uppercase d-block" style="font-size: 0.65rem;">Total Deals Closed</span>
+                <strong class="font-display text-emerald" style="font-size: 1.15rem; color: var(--accent-emerald) !important;" id="closed-deals-count">148 Opportunities</strong>
+              </div>
+              <div>
+                <span class="text-muted font-mono uppercase d-block" style="font-size: 0.65rem; text-align: right;">Pipelined Value</span>
+                <strong class="font-display text-warning" style="font-size: 1.15rem; color: var(--accent-primary) !important;" id="pipelined-val-count">$418,250</strong>
+              </div>
+            </div>
+
+            <!-- Dynamic bars visualizer -->
+            <div class="d-flex align-items-end justify-content-around h-100 py-3" style="min-height: 120px;" id="analytics-bars-container">
+              <div class="chart-bar-sim" style="height: 40%;" title="Mon: 42 closed"></div>
+              <div class="chart-bar-sim" style="height: 60%;" title="Tue: 58 closed"></div>
+              <div class="chart-bar-sim" style="height: 80%;" title="Wed: 74 closed"></div>
+              <div class="chart-bar-sim bar-active" style="height: 95%;" title="Thu: 102 closed"></div>
+              <div class="chart-bar-sim teal-bar" style="height: 50%;" title="Fri: 64 closed"></div>
+            </div>
+
+            <div class="d-flex justify-content-around font-mono text-muted text-xs pt-1 border-top" style="font-size: 0.65rem; border-color: var(--border-color) !important;">
+              <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08);">
+            Performance Metrics
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Detailed Sales Analytics</h2>
+          <p class="text-secondary mb-4">
+            Gain immediate visibility into outreach campaigns, conversion rates, and closed opportunities. AuraSales visualizes performance indexes to help you focus on high-impact target segments.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Live pipeline value tracking and conversion projections.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Detailed attribution modeling across outbound channels.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Standardized CSV and PDF report generation exports.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Reporting Precision</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">100% accurate</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Revenue Increase</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">+42% Average</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Deploy Performance Charts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 7: Team Collaboration -->
+  <section id="team-collaboration" class="feature-showcase-section overflow-hidden">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <!-- Content Left -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+          <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08);">
+            Team Operating Hub
+          </span>
+          <h2 class="display-5 fw-bold mb-4 font-display" style="color: var(--text-primary);">Secure Team Workspace</h2>
+          <p class="text-secondary mb-4">
+            Coordinate sales reps, managers, and system administrators inside a single, unified enterprise console. Allocate roles, audit dialogues, and set up dynamic handoff routing rules with robust SOC2 credential isolation.
+          </p>
+          
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Custom role assignment controls and scope rules.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Detailed system audit trails and conversational history logs.</li>
+            <li class="d-flex align-items-center gap-2"><i class="fa-solid fa-check text-emerald" style="color: var(--accent-emerald);"></i> Dynamic account allocations based on rep capabilities.</li>
+          </ul>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Seat Capacity</span>
+                <strong class="font-display text-emerald" style="font-size: 1.25rem; color: var(--accent-emerald) !important;">Unlimited reps</strong>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border rounded" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono mb-1" style="font-size: 0.68rem; text-transform: uppercase;">Compliance Guard</span>
+                <strong class="font-display text-warning" style="font-size: 1.25rem; color: var(--accent-primary) !important;">SOC2 Type II</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="signup.html" class="btn-premium px-4 py-2 text-sm">Invite Team Workspace</a>
+        </div>
+
+        <!-- Interactive Team Switcher Right -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+          <div class="interactive-ui-preview">
+            <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Role Permission Panel</strong>
+                <span class="font-mono text-muted" style="font-size: 0.7rem;">SELECT A ROLE TO INSPECT PERMISSIONS</span>
+              </div>
+              <span class="badge bg-success-subtle text-success font-mono" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">Active Vault</span>
+            </div>
+
+            <!-- Role tabs -->
+            <div class="d-flex justify-content-around mb-3">
+              <button class="btn btn-sm btn-outline-secondary font-mono py-1 px-3 border active" id="role-tab-rep" onclick="switchWorkspaceRole('rep')">Sales Rep</button>
+              <button class="btn btn-sm btn-outline-secondary font-mono py-1 px-3 border" id="role-tab-mgr" onclick="switchWorkspaceRole('mgr')">SDR Manager</button>
+              <button class="btn btn-sm btn-outline-secondary font-mono py-1 px-3 border" id="role-tab-adm" onclick="switchWorkspaceRole('adm')">Sys Admin</button>
+            </div>
+
+            <!-- Permission items grid -->
+            <div class="p-3 rounded border" style="background: var(--bg-primary); border-color: var(--border-color);">
+              <span class="d-block text-muted font-mono mb-2" style="font-size: 0.65rem; text-transform: uppercase;">Active Workspace Permissions Matrix</span>
+              <div class="d-flex flex-col gap-2 font-mono" style="font-size: 0.75rem;">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-1" style="border-color: var(--border-color) !important;">
+                  <span>Configure API tokens &amp; Credentials</span>
+                  <span id="perm-api" class="text-danger fw-bold"><i class="fa-solid fa-circle-xmark"></i> Denied</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-1" style="border-color: var(--border-color) !important;">
+                  <span>Audit dialogue logs &amp; transcripts</span>
+                  <span id="perm-audit" class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Re-route high-intent accounts</span>
+                  <span id="perm-route" class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: BUSINESS BENEFITS -->
+  <section class="benefits-comparison-section py-6 overflow-hidden" style="border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08);">
+          Measurable Gains
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Business Impact Matrix</h2>
+        <p class="text-secondary">
+          Track how integrating AuraSales directly optimizes your outbound cost footprint and accelerates revenue generation pipelines.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Before AuraSales Card -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+          <div class="benefit-comparison-card card-negative">
+            <h4 class="font-display fw-bold text-danger mb-3" style="font-size: 1.25rem;"><i class="fa-solid fa-circle-xmark me-2"></i> Without AuraSales Platform</h4>
+            <p class="text-muted text-sm mb-4">Manual operations restrict outbound capacity and let leads rot due to slow response lag.</p>
+            
+            <div class="d-flex flex-column gap-3">
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-notch benefit-icon-red"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">SDR Response Lag</strong>
+                  <span class="text-secondary text-sm">Median response wait times averaging 4.5 hours on target accounts.</span>
+                  <div class="before-after-pill pill-red mt-1 d-inline-block">Avg Lag: 4.5 Hours</div>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-notch benefit-icon-red"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Manual Qualification Churn</strong>
+                  <span class="text-secondary text-sm">Reps spending 40%+ of schedule manually screening pipeline accounts.</span>
+                  <div class="before-after-pill pill-red mt-1 d-inline-block">Rep Time Lost: 42%</div>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-notch benefit-icon-red"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">CRM Synchronization Gap</strong>
+                  <span class="text-secondary text-sm">Missing context, stale pipeline contacts, and disconnected notes inside Salesforce.</span>
+                  <div class="before-after-pill pill-red mt-1 d-inline-block">Sync lag: 2-3 Days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- With AuraSales Card -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+          <div class="benefit-comparison-card card-positive">
+            <h4 class="font-display fw-bold text-success mb-3" style="font-size: 1.25rem;"><i class="fa-solid fa-circle-check me-2"></i> Powered by AuraSales</h4>
+            <p class="text-muted text-sm mb-4">Autonomous layers respond instantly, qualify deep context, and maintain pristine databases.</p>
+            
+            <div class="d-flex flex-column gap-3">
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-check benefit-icon-green"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Immediate Dialogue Engagement</strong>
+                  <span class="text-secondary text-sm">Specialized SDR agents respond inside a median of 12 seconds 24/7.</span>
+                  <div class="before-after-pill pill-green mt-1 d-inline-block">Avg Lag: 12 Seconds</div>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-check benefit-icon-green"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Automated BANT Qualification</strong>
+                  <span class="text-secondary text-sm">Disqualifies low-fit opportunities automatically to free up rep schedule space.</span>
+                  <div class="before-after-pill pill-green mt-1 d-inline-block">Rep focus: +3.2x productivity</div>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-circle-check benefit-icon-green"></i>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Bidirectional Sync Integrity</strong>
+                  <span class="text-secondary text-sm">Updates logs, transcripts, scheduled discovery slots, and metrics dynamically.</span>
+                  <div class="before-after-pill pill-green mt-1 d-inline-block">Sync Lag: &lt; 50ms</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: USE CASE SNAPSHOTS -->
+  <section class="use-cases-section py-6" style="background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08);">
+          Platform Versatility
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Industry Deployment Snapshots</h2>
+        <p class="text-secondary">
+          Witness how leading market segments leverage AuraSales automation models to trigger conversions instantly.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- SaaS -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-cloud text-warning mb-3" style="font-size: 1.5rem; color: var(--accent-primary) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">SaaS &amp; Tech</h5>
+            <p class="text-secondary text-sm mb-0">Address technical integration inquiries and schedule enterprise architecture reviews instantly.</p>
+          </div>
+        </div>
+
+        <!-- Healthcare -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-heart-pulse text-teal mb-3" style="font-size: 1.5rem; color: var(--accent-teal) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">Healthcare GTM</h5>
+            <p class="text-secondary text-sm mb-0">Ensure complete HIPAA credential isolation while routing provider practice inquiries securely.</p>
+          </div>
+        </div>
+
+        <!-- Real Estate -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-building text-success mb-3" style="font-size: 1.5rem; color: var(--accent-emerald) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">Real Estate Dev</h5>
+            <p class="text-secondary text-sm mb-0">Score investment thresholds and book private showing calendars dynamically.</p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-graduation-cap text-warning mb-3" style="font-size: 1.5rem; color: var(--accent-primary) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">EduTech &amp; Academy</h5>
+            <p class="text-secondary text-sm mb-0">Qualify prospective student enrollment timelines and schedule intake counseling calls.</p>
+          </div>
+        </div>
+
+        <!-- Finance -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-scale-balanced text-teal mb-3" style="font-size: 1.5rem; color: var(--accent-teal) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">Finance &amp; Banking</h5>
+            <p class="text-secondary text-sm mb-0">Verify firmographic capital requirements and manage outbound corporate fund inquiries.</p>
+          </div>
+        </div>
+
+        <!-- E-commerce -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-cart-shopping text-success mb-3" style="font-size: 1.5rem; color: var(--accent-emerald) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">E-commerce Brands</h5>
+            <p class="text-secondary text-sm mb-0">Automate high-volume bulk discount negotiations and coordinate corporate wholesale accounts.</p>
+          </div>
+        </div>
+
+        <!-- Agency -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="350">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-wand-magic-sparkles text-warning mb-3" style="font-size: 1.5rem; color: var(--accent-primary) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">Agency Services</h5>
+            <p class="text-secondary text-sm mb-0">Address brand objectives, extract client budget constraints, and coordinate pitch presentations.</p>
+          </div>
+        </div>
+
+        <!-- Professional services -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="cert-card-premium p-4 text-start">
+            <i class="fa-solid fa-user-tie text-teal mb-3" style="font-size: 1.5rem; color: var(--accent-teal) !important;"></i>
+            <h5 class="font-display fw-bold mb-2">Professional Firms</h5>
+            <p class="text-secondary text-sm mb-0">Coordinate prospective retainer consults and record client service requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: CUSTOMER FEEDBACK -->
+  <section class="feedback-section py-6 overflow-hidden" style="border-bottom: 1px solid var(--border-color);">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08);">
+          Proven Success
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">AuraSales Global Reputation</h2>
+        <p class="text-secondary">
+          Read how high-growth sales organizations rely on our modular features to lock down qualified pipeline opportunities.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="cert-card-premium p-4 text-start">
+            <div class="d-flex text-warning mb-3 gap-1" style="color: var(--accent-primary) !important;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-secondary text-sm mb-4" style="line-height: 1.6;">
+              "Integrating the BANT Scorecard qualification tool cut down rep screening schedules by 40%. The calendar automation works flawlessly across G Suite and Outlook timezone layers."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background: var(--accent-primary); font-family: var(--font-display); font-weight: 700;">
+                JD
+              </div>
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.92rem; color: var(--text-primary);">Jonathan Davis</strong>
+                <span class="text-muted font-mono" style="font-size: 0.72rem;">Director of GTM, CloudScale</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="cert-card-premium p-4 text-start">
+            <div class="d-flex text-warning mb-3 gap-1" style="color: var(--accent-primary) !important;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-secondary text-sm mb-4" style="line-height: 1.6;">
+              "We deployed the Objection Sandbox for outbound email replies and saw meeting bookings jump by 3x. Salesforce bidirectional sync keeps our pipelines completely clean without effort."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background: var(--accent-teal); font-family: var(--font-display); font-weight: 700;">
+                SH
+              </div>
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.92rem; color: var(--text-primary);">Sarah Hughes</strong>
+                <span class="text-muted font-mono" style="font-size: 0.72rem;">Head of Sales, MedTech solutions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="cert-card-premium p-4 text-start">
+            <div class="d-flex text-warning mb-3 gap-1" style="color: var(--accent-primary) !important;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-secondary text-sm mb-4" style="line-height: 1.6;">
+              "The Team Workspace permission routing allows our SDR managers to allocate target accounts based on performance. The SOC2 Type II compliance provides complete assurance."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background: var(--accent-emerald); font-family: var(--font-display); font-weight: 700;">
+                MK
+              </div>
+              <div>
+                <strong class="d-block font-display" style="font-size: 0.92rem; color: var(--text-primary);">Michael Kowalski</strong>
+                <span class="text-muted font-mono" style="font-size: 0.72rem;">VP of Operations, Apex Capital</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FINAL CTA -->
+  <section class="cta-section py-6 overflow-hidden position-relative">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="max-w-800 mx-auto text-center" data-aos="zoom-in" data-aos-duration="1000">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          Immediate Activation
+        </span>
+        <h2 class="display-4 fw-bold mb-4 font-display" style="letter-spacing: -0.02em; color: var(--text-primary);">
+          Scale Your Pipeline Automatically
+        </h2>
+        <p class="lead text-secondary mb-5" style="font-size: 1.15rem; line-height: 1.7;">
+          Unlock immediate conversation responses, deep criteria evaluation, and native Salesforce/HubSpot synchronization. Get started free in 5 minutes.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="signup.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+            Start Free Trial <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="demo.html" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" style="font-family: var(--font-display); font-weight: 700;">
+            Book Platform Demo <i class="fa-solid fa-desktop"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Features Page Sandbox Control Logic Script -->
+  <script>
+    // Highlight category navigation active tabs based on manual select
+    function highlightTab(element) {
+      document.querySelectorAll('.feature-nav-btn').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    // 1. AI Assistant objection responses simulator
+    function triggerSdrDialogue(scenario) {
+      const historyContainer = document.getElementById('sandbox-chat-history');
+      
+      // Clear history list and show immediate loading bubble
+      historyContainer.innerHTML = `
+        <div class="mini-chat-bubble user">
+          ${scenario === 'pricing' ? '"Is it too expensive?"' : scenario === 'integration' ? '"Sync lag support?"' : '"Compliance standard?"'}
+        </div>
+        <div class="mini-chat-bubble bot" id="chat-typing-bubble">
+          <span class="spinner-grow spinner-grow-sm me-1 text-warning" style="width: 8px; height: 8px; color: var(--accent-primary);"></span> Thinking...
+        </div>
+      `;
+
+      // Trigger setTimeout simulation
+      setTimeout(() => {
+        const typingBubble = document.getElementById('chat-typing-bubble');
+        if (typingBubble) typingBubble.remove();
+
+        let botReply = '';
+        let confValue = '';
+
+        if (scenario === 'pricing') {
+          botReply = 'AuraSales is priced to align directly with rep performance. By automating qualifying steps, our platform typically delivers a 3.2x productivity increase, letting reps close more pipeline without headcount expansion.';
+          confValue = '99.4%';
+        } else if (scenario === 'integration') {
+          botReply = 'Our synchronization system operates with a bidirectional sync lag below 50ms, updating logs, scheduled calendars, and customer files instantly.';
+          confValue = '98.8%';
+        } else {
+          botReply = 'AuraSales fully complies with SOC 2 Type II audit certifications. We isolate corporate credentials securely, ensuring zero credentials leak.';
+          confValue = '99.7%';
+        }
+
+        historyContainer.innerHTML += `
+          <div class="mini-chat-bubble bot">
+            ${botReply}
+            <div class="mt-2 text-end">
+              <span class="badge bg-warning-subtle text-warning font-mono" style="font-size: 0.65rem; background: rgba(217, 119, 6, 0.08); color: var(--accent-primary) !important;">
+                Confidence Match: ${confValue}
+              </span>
+            </div>
+          </div>
+        `;
+      }, 1000);
+    }
+
+    // 2. Lead Quality Recalculator
+    function recalculateBant() {
+      const bChecked = document.getElementById('bant-b').checked;
+      const aChecked = document.getElementById('bant-a').checked;
+      const nChecked = document.getElementById('bant-n').checked;
+      const tChecked = document.getElementById('bant-t').checked;
+
+      let score = 0;
+      if (bChecked) score += 25;
+      if (aChecked) score += 25;
+      if (nChecked) score += 25;
+      if (tChecked) score += 25;
+
+      // Update label elements
+      document.getElementById('bant-score-display').textContent = score + '%';
+
+      const statusBadge = document.getElementById('bant-status-badge');
+      const timelinePill = document.getElementById('timeline-status-pill');
+
+      // Update timeline status label pill
+      if (tChecked) {
+        timelinePill.textContent = 'Passed';
+        timelinePill.className = 'bant-status-pill text-success';
+        timelinePill.style.background = 'rgba(5, 150, 105, 0.08)';
+        timelinePill.style.color = 'var(--accent-emerald)';
+      } else {
+        timelinePill.textContent = 'Pending';
+        timelinePill.className = 'bant-status-pill text-warning';
+        timelinePill.style.background = 'rgba(217, 119, 6, 0.08)';
+        timelinePill.style.color = 'var(--accent-primary)';
+      }
+
+      // Modify Prospect quality classification
+      if (score === 100) {
+        statusBadge.textContent = 'HOT PROSPECT (READY TO ROUTE)';
+        statusBadge.className = 'badge bg-success-subtle text-success font-mono mt-1';
+        statusBadge.style.color = 'var(--accent-emerald)';
+        statusBadge.style.background = 'rgba(5, 150, 105, 0.08)';
+        statusBadge.style.borderColor = 'rgba(5, 150, 105, 0.15)';
+      } else if (score >= 50) {
+        statusBadge.textContent = 'WARM PROSPECT';
+        statusBadge.className = 'badge bg-warning-subtle text-warning font-mono mt-1';
+        statusBadge.style.color = 'var(--accent-primary)';
+        statusBadge.style.background = 'rgba(217, 119, 6, 0.08)';
+        statusBadge.style.borderColor = 'rgba(217, 119, 6, 0.15)';
+      } else {
+        statusBadge.textContent = 'COLD PROSPECT';
+        statusBadge.className = 'badge bg-danger-subtle text-danger font-mono mt-1';
+        statusBadge.style.color = '#DC2626';
+        statusBadge.style.background = 'rgba(220, 38, 38, 0.08)';
+        statusBadge.style.borderColor = 'rgba(220, 38, 38, 0.15)';
+      }
+    }
+
+    // 3. Sync dynamic logs additions
+    const crmLogTemplates = [
+      { icon: 'fa-arrows-spin text-teal', title: 'HubSpot timeline updated', desc: 'SDR scheduled call slot logged to contact card', latency: 'Just Now' },
+      { icon: 'fa-slack text-warning', title: 'Slack pipeline alert', desc: 'Dispatched prospect qualified notification to #outbound-sales', latency: '2s ago' },
+      { icon: 'fa-cloud-arrow-up text-success', title: 'Salesforce Contact Created', desc: 'Ingested and validated lead account parameters', latency: '5s ago' }
+    ];
+    let logIndex = 0;
+
+    function addSyncMockLog() {
+      const logger = document.getElementById('crm-sync-logger');
+      const data = crmLogTemplates[logIndex];
+      logIndex = (logIndex + 1) % crmLogTemplates.length;
+
+      const newLog = document.createElement('div');
+      newLog.className = 'crm-sync-item';
+      newLog.innerHTML = `
+        <i class="fa-solid ${data.icon}"></i>
+        <div>
+          <strong class="d-block font-display" style="font-size: 0.8rem; color: var(--text-primary);">${data.title}</strong>
+          <span class="font-mono text-muted d-block" style="font-size: 0.68rem;">${data.desc}</span>
+        </div>
+        <span class="ms-auto text-muted font-mono" style="font-size: 0.65rem;">${data.latency}</span>
+      `;
+      logger.insertBefore(newLog, logger.firstChild);
+      if (logger.children.length > 3) {
+        logger.removeChild(logger.lastChild);
+      }
+    }
+
+    // 4. Calendar slot selector
+    function selectCalendarSlot(element, timeText) {
+      document.querySelectorAll('.calendar-sim-slot').forEach(slot => {
+        if (!slot.classList.contains('booked')) slot.classList.remove('booked');
+      });
+      element.classList.add('booked');
+
+      const toast = document.getElementById('booking-confirmation-toast');
+      const timeDisplay = document.getElementById('booking-confirmed-time');
+
+      toast.classList.remove('d-none');
+      timeDisplay.textContent = timeText;
+    }
+
+    // 5. Sequence Delay modifier
+    function updateSequenceDelay(select) {
+      const delayVal = select.value;
+      const label = document.getElementById('sequence-delay-label');
+      label.textContent = `Wait ${delayVal} Day${delayVal > 1 ? 's' : ''}`;
+    }
+
+    // 6. Live charts timeframe toggler
+    const chartTimeframeData = {
+      weekly: {
+        deals: '148 Opportunities',
+        value: '$418,250',
+        heights: ['40%', '60%', '80%', '95%', '50%']
+      },
+      monthly: {
+        deals: '584 Opportunities',
+        value: '$1,845,900',
+        heights: ['70%', '85%', '90%', '60%', '98%']
+      }
+    };
+
+    function toggleChartTimeframe(type, button) {
+      // Toggle button active
+      button.parentNode.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const data = chartTimeframeData[type];
+      document.getElementById('closed-deals-count').textContent = data.deals;
+      document.getElementById('pipelined-val-count').textContent = data.value;
+
+      // Update Heights
+      const bars = document.querySelectorAll('#analytics-bars-container .chart-bar-sim');
+      bars.forEach((bar, index) => {
+        if (data.heights[index]) {
+          bar.style.height = data.heights[index];
+        }
+      });
+    }
+
+    // 7. Switch Team Workspace Role
+    const rolePermissionsMatrix = {
+      rep: {
+        api: '<span class="text-danger fw-bold"><i class="fa-solid fa-circle-xmark"></i> Denied</span>',
+        audit: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>',
+        route: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>'
+      },
+      mgr: {
+        api: '<span class="text-danger fw-bold"><i class="fa-solid fa-circle-xmark"></i> Denied</span>',
+        audit: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>',
+        route: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>'
+      },
+      adm: {
+        api: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>',
+        audit: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>',
+        route: '<span class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Approved</span>'
+      }
+    };
+
+    function switchWorkspaceRole(role) {
+      document.querySelectorAll('#role-tab-rep, #role-tab-mgr, #role-tab-adm').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`role-tab-${role}`).classList.add('active');
+
+      const matrix = rolePermissionsMatrix[role];
+      document.getElementById('perm-api').innerHTML = matrix.api;
+      document.getElementById('perm-audit').innerHTML = matrix.audit;
+      document.getElementById('perm-route').innerHTML = matrix.route;
+    }
+  </script>
+
+
+  <!-- 5. Reusable Footer Placeholder -->
+  <footer class="site-footer">
+    <div class="container-custom">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand mb-3 d-inline-flex" href="index.html">
+            <i class="fa-solid fa-brain brand-icon me-2"></i>
+            <span>AuraSales</span>
+          </a>
+          <p class="text-secondary" style="max-width: 320px;">Premium sales outreach, customer intelligence, and conversation workflow automation driven by high-efficiency AI layers.</p>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title">Platform</h5>
+          <ul class="footer-links">
+            <li><a href="features.html">Features</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="pricing.html">Pricing Structure</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-title">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="blog.html">Industry Blog</a></li>
+            <li><a href="faq.html">System FAQs</a></li>
+            <li><a href="contact.html">Contact Hub</a></li>
+            <li><a href="404.html">Status Center</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="footer-title">Access Console</h5>
+          <p class="text-secondary mb-3">Launch into our secure portal to monitor conversions, pipeline activity, and active automation tasks.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="login.html" class="btn-premium-outline btn-sm py-2 px-3">Launch Console</a>
+            <a href="signup.html" class="btn-premium btn-sm py-2 px-3">Join Workspace</a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5" style="border-color: var(--border-color)">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <p class="text-muted mb-0" style="font-size: 0.9rem;">&copy; 2026 AuraSales Inc. All rights reserved.</p>
+        <div class="d-flex gap-4">
+          <a href="404.html" class="text-muted" style="font-size: 0.9rem;">Terms of Service</a>
+          <a href="404.html" class="text-muted" style="font-size: 0.9rem;">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 6. Back To Top Button -->
+  <div id="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- CDN Script Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom Executable Main Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+</body>
+</html>

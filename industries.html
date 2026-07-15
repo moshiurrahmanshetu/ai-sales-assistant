@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries &amp; Use Cases - AuraSales</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS Library CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Zero-Flicker Head Theme Script -->
+  <script src="js/theme.js"></script>
+  
+  <!-- Custom Compiled Stylesheet Layers -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+
+  <!-- Localized Premium CSS Layer for Phase 22 -->
+  <style>
+    /* Premium Hover Lift & Card Styling */
+    .industry-card {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-primary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .industry-card-image {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .industry-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .industry-card:hover .industry-card-image img {
+      transform: scale(1.05);
+    }
+
+    .industry-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(25, 28, 26, 0.75);
+      backdrop-filter: blur(4px);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    /* Interactive Showcase Structure */
+    .showcase-tab-btn {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: transparent;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .showcase-tab-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: rgba(217, 119, 6, 0.02);
+    }
+
+    .showcase-tab-btn.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #FFFFFF !important;
+    }
+
+    .showcase-tab-btn.active .showcase-icon {
+      color: #FFFFFF !important;
+    }
+
+    .showcase-icon {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    .showcase-tab-btn.active .fa-chevron-right {
+      transform: translateX(4px);
+    }
+
+    /* Simulation Live Area */
+    .sim-panel {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .sim-kpi-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 30px;
+      background: rgba(13, 148, 136, 0.05);
+      border: 1px solid rgba(13, 148, 136, 0.15);
+      color: var(--accent-teal);
+    }
+
+    .sim-workflow-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-family: var(--font-primary);
+    }
+
+    .sim-workflow-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 4px 0;
+    }
+
+    .sim-chat-box {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      padding: 16px;
+      font-size: 0.85rem;
+    }
+
+    .sim-chat-msg {
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .sim-chat-msg.bot {
+      background: rgba(217, 119, 6, 0.05);
+      border: 1px solid rgba(217, 119, 6, 0.12);
+      color: var(--text-primary);
+      border-top-left-radius: 2px;
+    }
+
+    .sim-chat-msg.user {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      align-self: flex-end;
+      border-top-right-radius: 2px;
+    }
+
+    /* Challenge comparison design */
+    .challenge-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .challenge-header {
+      background: rgba(220, 38, 38, 0.03);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 24px;
+    }
+
+    .solution-header {
+      background: rgba(5, 150, 105, 0.03);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 24px;
+    }
+
+    /* Modern comparison layout */
+    .comparison-grid-header {
+      background-color: var(--bg-secondary);
+      border-bottom: 2px solid var(--border-color);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    .comparison-row {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.2s ease;
+    }
+
+    .comparison-row:hover {
+      background-color: rgba(217, 119, 6, 0.01);
+    }
+
+    body.dark-mode .comparison-row:hover {
+      background-color: rgba(217, 119, 6, 0.04);
+    }
+
+    /* Testimonials success metrics overlay */
+    .testimonial-metrics-badge {
+      background: rgba(5, 150, 105, 0.08);
+      border: 1.5px solid rgba(5, 150, 105, 0.2);
+      color: var(--accent-emerald);
+      border-radius: 30px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      font-weight: 600;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" style="position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-primary); width: 0%; z-index: 10500; transition: width 0.1s ease;"></div>
+
+  <!-- Global Preloader Loader -->
+  <div id="global-loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- 1. Sticky Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0 justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <i class="fa-solid fa-brain brand-icon me-2"></i>
+          <span>AuraSales</span>
+        </a>
+
+        <!-- Desktop Menu Items (Visible only on lg and above) -->
+        <div class="collapse navbar-collapse d-none d-lg-block flex-grow-0" id="desktopNavbar">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="product.html">Product</a></li>
+            <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+            <li class="nav-item"><a class="nav-link active" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+                Resources <i class="fa-solid fa-chevron-down dropdown-toggle-icon"></i>
+              </a>
+              <div class="dropdown-menu-premium" aria-labelledby="resourcesDropdown">
+                <a class="dropdown-item-premium" href="blog.html">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <span>Blog</span>
+                </a>
+                <a class="dropdown-item-premium" href="faq.html">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span>FAQ</span>
+                </a>
+                <a class="dropdown-item-premium" href="contact.html">
+                  <i class="fa-solid fa-headset"></i>
+                  <span>Contact</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side Controls (Desktop) -->
+        <div class="d-none d-lg-flex align-items-center gap-4">
+          <!-- Theme Toggle -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggle">
+              <input type="checkbox" id="themeToggle" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Login -->
+          <a href="login.html" class="btn-premium-outline btn-sm py-2 px-4" style="border-radius: 30px;">Login</a>
+          <!-- Get Started -->
+          <a href="signup.html" class="btn-premium btn-sm py-2 px-4" style="border-radius: 30px;">Get Started</a>
+        </div>
+
+        <!-- Mobile Menu Trigger & Switch (Visible below lg) -->
+        <div class="d-flex d-lg-none align-items-center gap-3">
+          <!-- Theme Toggle (Always accessible) -->
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="themeToggleMobile">
+              <input type="checkbox" id="themeToggleMobile" class="theme-toggle-checkbox">
+              <span class="slider">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+              </span>
+            </label>
+          </div>
+          <!-- Hamburger Toggle Button -->
+          <button class="hamburger-toggle" id="mobileMenuOpen" aria-label="Open Mobile Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Premium Offcanvas Mobile Menu Drawer -->
+  <div class="offcanvas-overlay" id="mobileMenuOverlay"></div>
+  <div class="offcanvas-menu" id="mobileMenuDrawer">
+    <div class="offcanvas-header">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-brain brand-icon me-2"></i>
+        <span>AuraSales</span>
+      </a>
+      <button class="offcanvas-close" id="mobileMenuClose" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-nav-links">
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="index.html">Home</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="product.html">Product</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="features.html">Features</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link active" href="industries.html">Industries</a></li>
+        <li class="offcanvas-nav-item"><a class="offcanvas-link" href="pricing.html">Pricing</a></li>
+        <li class="offcanvas-nav-item">
+          <div class="offcanvas-link mb-2">Resources</div>
+          <ul class="offcanvas-submenu">
+            <li><a class="offcanvas-submenu-link" href="blog.html"><i class="fa-solid fa-newspaper me-2 opacity-75"></i> Blog</a></li>
+            <li><a class="offcanvas-submenu-link" href="faq.html"><i class="fa-solid fa-circle-question me-2 opacity-75"></i> FAQ</a></li>
+            <li><a class="offcanvas-submenu-link" href="contact.html"><i class="fa-solid fa-headset me-2 opacity-75"></i> Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex flex-column gap-3 mt-5">
+        <a href="login.html" class="btn-premium-outline w-full py-2 text-center" style="border-radius: 30px;">Login</a>
+        <a href="signup.html" class="btn-premium w-full py-2 text-center" style="border-radius: 30px;">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PAGE HERO -->
+  <section class="product-hero-section py-6 overflow-hidden position-relative" id="industries-hero">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="row align-items-center g-5">
+        
+        <!-- Hero Copy Content -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+            <i class="fa-solid fa-arrows-split-up-and-left me-1"></i> Tailored Workflows
+          </span>
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0" style="font-size: 0.85rem; font-family: var(--font-mono);">
+              <li class="breadcrumb-item"><a href="index.html" class="text-secondary hover-link">Home</a></li>
+              <li class="breadcrumb-item text-primary active" aria-current="page">Industries</li>
+            </ol>
+          </nav>
+          <h1 class="display-3 fw-bold tracking-tight mb-4 font-display" style="letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary);">
+            AI Solutions for Every Industry
+          </h1>
+          <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.7; max-width: 620px;">
+            AuraSales adapts its conversation models, qualification scorecards, and scheduling patterns to the custom vocabulary, regulatory framework, and sales cycle of your industry.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="demo.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" id="hero-book-demo-btn" style="font-family: var(--font-display); font-weight: 700;">
+              Book Demo <i class="fa-solid fa-calendar-days"></i>
+            </a>
+            <a href="#industry-grid-section" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" id="hero-explore-btn" style="font-family: var(--font-display); font-weight: 700;">
+              Explore Solutions <i class="fa-solid fa-arrow-down"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Illustration -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <div class="position-relative" style="height: 380px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-lg);" id="hero-illustration-wrapper">
+            <div class="cta-glow-blur" style="top: -10%; right: 5%;"></div>
+            <div class="cta-grid-overlay"></div>
+            
+            <!-- Floating widgets -->
+            <div class="floating-badge badge-warning-custom" style="top: 15%; left: 8%;">
+              <i class="fa-solid fa-user-tie me-1"></i> Healthcare Eligible
+            </div>
+            <div class="floating-badge badge-emerald-custom" style="bottom: 15%; right: 8%;">
+              <i class="fa-solid fa-chart-line me-1"></i> SaaS Pipeline +42%
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Team collaborating in modern workspace with data dashboards" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: INDUSTRY OVERVIEW INTRO -->
+  <section class="overview-intro-section py-6 overflow-hidden border-top border-bottom" style="background-color: var(--bg-secondary); border-color: var(--border-color) !important;" id="industry-overview-section">
+    <div class="container-custom">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="card-icon-wrapper mb-4" style="width: 54px; height: 54px; font-size: 1.35rem; color: var(--accent-primary); background: rgba(217, 119, 6, 0.08); border: 1.5px solid rgba(217, 119, 6, 0.2);">
+            <i class="fa-solid fa-shapes"></i>
+          </div>
+          <h2 class="display-5 fw-bold font-display tracking-tight mb-4" style="color: var(--text-primary);">
+            One Platform. Unlimited Industry Workflows.
+          </h2>
+          <p class="text-secondary" style="font-size: 1.08rem; line-height: 1.75;">
+            Traditional sales automation tools force every business into the same generic sequence template. AuraSales takes a different approach. Our cognitive model identifies the unique characteristics of your sector, including buying signs, pricing structures, compliance regulations, and integration requirements.
+          </p>
+          <p class="text-secondary mb-0" style="font-size: 1.08rem; line-height: 1.75;">
+            By deploying specialized industry-specific training layers, we ensure your prospects receive answers that are completely aligned with expert team communication.
+          </p>
+        </div>
+        
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="row g-4">
+            
+            <div class="col-md-6" id="overview-metric-card-1">
+              <div class="p-4 rounded border" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Linguistic Adaptation</span>
+                <strong class="font-display d-block text-primary" style="font-size: 1.8rem;">100% Native</strong>
+                <p class="text-muted text-xs mb-0 mt-1" style="font-size: 0.8rem; line-height: 1.4;">Adapts conversations to match deep industry terms and complex acronyms.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6" id="overview-metric-card-2">
+              <div class="p-4 rounded border" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Security Standards</span>
+                <strong class="font-display d-block text-emerald" style="font-size: 1.8rem; color: var(--accent-emerald);">SOC2 &amp; HIPAA</strong>
+                <p class="text-muted text-xs mb-0 mt-1" style="font-size: 0.8rem; line-height: 1.4;">Ensures healthcare, finance, and enterprise data conforms to regulatory rules.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6" id="overview-metric-card-3">
+              <div class="p-4 rounded border" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Model Tuning</span>
+                <strong class="font-display d-block text-warning" style="font-size: 1.8rem; color: var(--accent-primary);">12+ Sector Models</strong>
+                <p class="text-muted text-xs mb-0 mt-1" style="font-size: 0.8rem; line-height: 1.4;">Pre-trained structures optimized for key business channels and sizes.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6" id="overview-metric-card-4">
+              <div class="p-4 rounded border" style="background: var(--bg-card); border-color: var(--border-color);">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Outbound Acceleration</span>
+                <strong class="font-display d-block text-teal" style="font-size: 1.8rem; color: var(--accent-teal);">+240% Bookings</strong>
+                <p class="text-muted text-xs mb-0 mt-1" style="font-size: 0.8rem; line-height: 1.4;">Dramatically boosts meeting scheduling rates across all channels.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: INDUSTRY GRID -->
+  <section class="industry-grid-section py-6 overflow-hidden" id="industry-grid-section">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+          Adaptive Verticals
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Pre-Tuned Verticals</h2>
+        <p class="text-secondary">
+          Select your industry to see how AuraSales automates custom qualifications, handles complex objections, and accelerates conversion pipelines.
+        </p>
+      </div>
+
+      <!-- 8 Industry Cards -->
+      <div class="row g-4">
+        
+        <!-- SaaS Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="50" id="industry-card-saas">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">B2B SAAS</span>
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Analytics on laptop represent SaaS segment" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-cloud text-warning" style="font-size: 1.2rem; color: var(--accent-primary);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Software &amp; SaaS</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Accelerate product-led signups, filter tech integration questions, manage SOC2 reviews, and book high-ticket pipeline demos.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 18.5% Demo Rate</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> +24% Trial conversion</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('saas')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Estate Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100" id="industry-card-realestate">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">PROPTECH</span>
+              <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=400&q=80" alt="Beautiful house representing real estate" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-house-chimney text-teal" style="font-size: 1.2rem; color: var(--accent-teal);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Real Estate</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Qualify buyer/seller budgets, address complex location queries, schedule tours, and follow up on open-house signins.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 34.2% Tour Booking</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 98% Profile Enrich</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('realestate')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Healthcare Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150" id="industry-card-healthcare">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">CLINICAL</span>
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80" alt="Clinical consultation representing healthcare" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-stethoscope text-emerald" style="font-size: 1.2rem; color: var(--accent-emerald);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Healthcare</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                HIPAA-compliant triage, screening elective treatments, capturing medical eligibility criteria, and booking consultations.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 91% Triage Screen</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> HIPAA Certified</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('healthcare')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200" id="industry-card-education">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">EDTECH</span>
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" alt="Students with diplomas representing education" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-graduation-cap text-warning" style="font-size: 1.2rem; color: var(--accent-primary);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Education</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Engage prospective students, answer prerequisites and tuition FAQs, and route qualified candidates to admissions.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> +54% Enrollment Yield</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 96.5% FAQ Match</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('education')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250" id="industry-card-finance">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">WEALTH TECH</span>
+              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=400&q=80" alt="Finance analysis chart representing finance industry" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-chart-line text-emerald" style="font-size: 1.2rem; color: var(--accent-emerald);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Finance &amp; Banking</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Screen assets, qualify premiums under rigorous compliance layers, and book strategy calls with licensed planners.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 100% Compliance Audit</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> +38% Assets Under Management</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('finance')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-commerce Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300" id="industry-card-ecommerce">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">RETAIL</span>
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80" alt="Modern clothing racks represent E-commerce" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-cart-shopping text-teal" style="font-size: 1.2rem; color: var(--accent-teal);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">E-commerce &amp; Retail</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Address cart issues, qualify wholesale partners, manage bulk operations, and capture ambassador program leads.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 12.4% Cart Recovery</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> -60% Ticket Load</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('ecommerce')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="350" id="industry-card-travel">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">HOSPITALITY</span>
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80" alt="Travel luggage representing travel industry" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-plane text-warning" style="font-size: 1.2rem; color: var(--accent-primary);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Travel &amp; Hospitality</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Address complex itinerary FAQs, qualify group/retreat sizes, handle corporate outings, and route high-value VIP accounts.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 88% Group Qualified</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> +45% booking values</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('travel')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketing Agency Card -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400" id="industry-card-agency">
+          <div class="industry-card">
+            <div class="industry-card-image">
+              <span class="industry-badge">SERVICES</span>
+              <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=400&q=80" alt="Agency meeting representation illustration" loading="lazy" referrerPolicy="no-referrer">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-bullhorn text-teal" style="font-size: 1.2rem; color: var(--accent-teal);"></i>
+                <h4 class="font-display mb-0 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Marketing Agencies</h4>
+              </div>
+              <p class="text-muted text-xs flex-grow-1" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">
+                Screen ad spend levels, collect business growth goals, deliver audit templates, and schedule high-intent strategy calls.
+              </p>
+              <div class="border-top pt-3 mb-3">
+                <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.65rem;">Key Benefits</span>
+                <span class="d-block font-mono text-xs text-primary mb-1"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> 93% Spend Screen</span>
+                <span class="d-block font-mono text-xs text-primary"><i class="fa-solid fa-circle-check text-emerald me-1" style="color: var(--accent-emerald);"></i> +65% Pipeline Growth</span>
+              </div>
+              <a href="#interactive-showcase" class="btn-premium-outline py-2 text-center text-xs" style="border-radius: 30px;" onclick="selectShowcaseTab('agency')">Explore Solution</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: INTERACTIVE INDUSTRY SHOWCASE -->
+  <section class="interactive-showcase-section py-6 overflow-hidden" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);" id="interactive-showcase">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          Dynamic Simulator
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Interactive Pipeline Simulator</h2>
+        <p class="text-secondary">
+          Click an industry on the left to see how the conversational scripts, lead parameters, workflows, and dashboard metrics change dynamically in real-time.
+        </p>
+      </div>
+
+      <div class="row g-5">
+        
+        <!-- Left Side: Selector -->
+        <div class="col-lg-4" data-aos="fade-right">
+          <div class="p-1">
+            <button class="showcase-tab-btn active" id="btn-saas" onclick="selectShowcaseTab('saas')">
+              <span><i class="fa-solid fa-cloud me-3 showcase-icon" style="color: var(--accent-primary);"></i> Software &amp; SaaS</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-realestate" onclick="selectShowcaseTab('realestate')">
+              <span><i class="fa-solid fa-house-chimney me-3 showcase-icon"></i> Real Estate</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-healthcare" onclick="selectShowcaseTab('healthcare')">
+              <span><i class="fa-solid fa-stethoscope me-3 showcase-icon"></i> Healthcare</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-education" onclick="selectShowcaseTab('education')">
+              <span><i class="fa-solid fa-graduation-cap me-3 showcase-icon"></i> Education</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-finance" onclick="selectShowcaseTab('finance')">
+              <span><i class="fa-solid fa-chart-line me-3 showcase-icon"></i> Finance &amp; Banking</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-ecommerce" onclick="selectShowcaseTab('ecommerce')">
+              <span><i class="fa-solid fa-cart-shopping me-3 showcase-icon"></i> E-commerce</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-travel" onclick="selectShowcaseTab('travel')">
+              <span><i class="fa-solid fa-plane me-3 showcase-icon"></i> Travel &amp; Hospitality</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+            <button class="showcase-tab-btn" id="btn-agency" onclick="selectShowcaseTab('agency')">
+              <span><i class="fa-solid fa-bullhorn me-3 showcase-icon"></i> Marketing Agency</span>
+              <i class="fa-solid fa-chevron-right text-muted"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Side: Dynamic Preview Area -->
+        <div class="col-lg-8" data-aos="fade-left">
+          <div class="sim-panel" id="simulator-container">
+            
+            <!-- Top Bar Header -->
+            <div class="border-bottom pb-3 mb-4 d-flex justify-content-between align-items-center" style="border-color: var(--border-color) !important;">
+              <div>
+                <span class="text-muted font-mono uppercase d-block" style="font-size: 0.65rem; letter-spacing: 0.05em;" id="sim-industry-badge">VERTICAL TARGET: B2B SAAS</span>
+                <h3 class="font-display mb-0 text-primary" style="font-size: 1.35rem;" id="sim-industry-title">Software &amp; SaaS Model Calibration</h3>
+              </div>
+              <span class="sim-kpi-pill" id="sim-main-kpi"><i class="fa-solid fa-circle-nodes me-1"></i> 18.5% Demo Rate</span>
+            </div>
+
+            <!-- Content Grid split: Workflow Layout vs Live Dialogue -->
+            <div class="row g-4">
+              
+              <!-- Left inside Column: Workflow and Metrics -->
+              <div class="col-md-6">
+                <!-- Automation Workflow Diagram mockup -->
+                <div class="mb-4">
+                  <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Automation Pipeline Flow</span>
+                  <div class="d-flex flex-column gap-1">
+                    <div class="sim-workflow-step" id="sim-step-1">
+                      <i class="fa-solid fa-globe text-muted"></i>
+                      <span><strong>Step 1:</strong> Web Signup Inquiry</span>
+                    </div>
+                    <div class="sim-workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="sim-workflow-step" id="sim-step-2">
+                      <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                      <span><strong>Step 2:</strong> Enrichment / SOC2 objection</span>
+                    </div>
+                    <div class="sim-workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="sim-workflow-step" id="sim-step-3" style="background: rgba(5, 150, 105, 0.04); border-color: rgba(5, 150, 105, 0.15);">
+                      <i class="fa-solid fa-calendar-check text-emerald" style="color: var(--accent-emerald);"></i>
+                      <span><strong>Step 3:</strong> Book Demo with Rep</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- KPIs and Business impact -->
+                <div>
+                  <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Performance Index Metrics</span>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <div class="p-3 border rounded" style="background: var(--bg-primary); border-color: var(--border-color);">
+                        <span class="d-block text-muted font-mono text-xs mb-1" style="font-size: 0.65rem;">Response Time</span>
+                        <strong class="font-display text-primary" style="font-size: 1.15rem;" id="sim-metric-val-1">9 seconds</strong>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="p-3 border rounded" style="background: var(--bg-primary); border-color: var(--border-color);">
+                        <span class="d-block text-muted font-mono text-xs mb-1" style="font-size: 0.65rem;">Trial Conversions</span>
+                        <strong class="font-display text-emerald" style="font-size: 1.15rem; color: var(--accent-emerald) !important;" id="sim-metric-val-2">+24%</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right inside Column: Conversation preview & pipeline stage -->
+              <div class="col-md-6">
+                <!-- Lead Pipeline stage visualizer -->
+                <div class="mb-4">
+                  <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Lead Funnel Pipeline Status</span>
+                  <div class="p-3 border rounded bg-light" style="background: var(--bg-primary); border-color: var(--border-color);">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="font-mono text-xs text-muted" style="font-size: 0.72rem;">Deal Stage Location</span>
+                      <span class="badge bg-success-subtle text-success font-mono" id="sim-pipeline-tag" style="background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15); font-size: 0.65rem;">Demo Route</span>
+                    </div>
+                    <strong class="font-display d-block text-primary text-sm mb-2" id="sim-pipeline-text">Qualified (SOC2 check completed)</strong>
+                    <div class="progress" style="height: 6px; background-color: var(--border-color);">
+                      <div class="progress-bar" id="sim-pipeline-progress" role="progressbar" style="width: 75%; background-color: var(--accent-primary);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chat Dialogue mockup -->
+                <div>
+                  <span class="d-block text-muted font-mono uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 0.05em;">Live Dialog Objection Handling</span>
+                  <div class="sim-chat-box d-flex flex-column gap-2" id="sim-chat-container">
+                    <div class="sim-chat-msg user" id="sim-dialog-user">
+                      "Does AuraSales support SAML SSO and SOC2?"
+                    </div>
+                    <div class="sim-chat-msg bot" id="sim-dialog-bot">
+                      "Absolutely! We support SAML SSO and are fully SOC2 Type II compliant. Let me schedule a call with our technical architect."
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Bottom CTA block -->
+            <div class="mt-4 pt-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-3" style="border-color: var(--border-color) !important;">
+              <span class="font-mono text-muted text-xs" style="font-size: 0.75rem;" id="sim-sub-text">Pre-loaded model weights are optimized for Enterprise SaaS organizations.</span>
+              <a href="signup.html" class="btn-premium py-2 px-4 text-xs" id="sim-cta-btn" style="font-size: 0.8rem; font-weight: 600;">Deploy SaaS Model <i class="fa-solid fa-chevron-right ms-1"></i></a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: COMMON BUSINESS CHALLENGES -->
+  <section class="challenges-section py-6 overflow-hidden" id="business-challenges">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          Friction Solved
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Common Industry Challenges</h2>
+        <p class="text-secondary">
+          Traditional outreach systems build friction. Watch how AuraSales instantly transforms common operational challenges into competitive advantages.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        
+        <!-- Challenge 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50" id="challenge-card-1">
+          <div class="challenge-card h-100 d-flex flex-column">
+            <!-- Downward Arrow Flow visual -->
+            <div class="challenge-header">
+              <span class="badge bg-danger-subtle text-danger font-mono mb-2" style="font-size: 0.65rem; background: rgba(220, 38, 38, 0.08); color: #DC2626 !important; border: 1px solid rgba(220, 38, 38, 0.15);">OPERATIONAL ISSUE</span>
+              <h4 class="font-display mb-1 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Slow Response Latency</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Prospects submit contact forms but wait hours to hear back from busy human sales reps, causing drop-offs.</p>
+            </div>
+            <div class="text-center py-2 text-muted bg-light border-bottom" style="font-size: 0.85rem; background: var(--bg-secondary); border-color: var(--border-color) !important;">
+              <i class="fa-solid fa-arrow-down-long"></i> Dynamic Shift <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+            <div class="solution-header p-4 flex-grow-1">
+              <span class="badge bg-success-subtle text-success font-mono mb-2" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">AURASALES FIX</span>
+              <h4 class="font-display mb-1 text-md text-emerald" style="font-size: 1.15rem; color: var(--accent-emerald) !important;">Instant AI Replies</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Answers custom technical, budget, and compliance objections in less than 15 seconds, maintaining buyer interest.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="challenge-card-2">
+          <div class="challenge-card h-100 d-flex flex-column">
+            <div class="challenge-header">
+              <span class="badge bg-danger-subtle text-danger font-mono mb-2" style="font-size: 0.65rem; background: rgba(220, 38, 38, 0.08); color: #DC2626 !important; border: 1px solid rgba(220, 38, 38, 0.15);">OPERATIONAL ISSUE</span>
+              <h4 class="font-display mb-1 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Manual Follow-up Bottleneck</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Rep activity logs fill up. Contacts require constant manual outreach, causing important deals to fall through.</p>
+            </div>
+            <div class="text-center py-2 text-muted bg-light border-bottom" style="font-size: 0.85rem; background: var(--bg-secondary); border-color: var(--border-color) !important;">
+              <i class="fa-solid fa-arrow-down-long"></i> Dynamic Shift <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+            <div class="solution-header p-4 flex-grow-1">
+              <span class="badge bg-success-subtle text-success font-mono mb-2" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">AURASALES FIX</span>
+              <h4 class="font-display mb-1 text-md text-emerald" style="font-size: 1.15rem; color: var(--accent-emerald) !important;">Automated Workflow Pacing</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Configures dynamic follow-up emails, schedules and reschedules triggers, and logs all events in HubSpot.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" id="challenge-card-3">
+          <div class="challenge-card h-100 d-flex flex-column">
+            <div class="challenge-header">
+              <span class="badge bg-danger-subtle text-danger font-mono mb-2" style="font-size: 0.65rem; background: rgba(220, 38, 38, 0.08); color: #DC2626 !important; border: 1px solid rgba(220, 38, 38, 0.15);">OPERATIONAL ISSUE</span>
+              <h4 class="font-display mb-1 text-md" style="font-size: 1.15rem; color: var(--text-primary);">Low Meeting Conversions</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Reps spend precious time pitching unqualified leads, scheduling useless introductory calls that don't close.</p>
+            </div>
+            <div class="text-center py-2 text-muted bg-light border-bottom" style="font-size: 0.85rem; background: var(--bg-secondary); border-color: var(--border-color) !important;">
+              <i class="fa-solid fa-arrow-down-long"></i> Dynamic Shift <i class="fa-solid fa-arrow-down-long"></i>
+            </div>
+            <div class="solution-header p-4 flex-grow-1">
+              <span class="badge bg-success-subtle text-success font-mono mb-2" style="font-size: 0.65rem; background: rgba(5, 150, 105, 0.08); color: var(--accent-emerald) !important; border: 1px solid rgba(5, 150, 105, 0.15);">AURASALES FIX</span>
+              <h4 class="font-display mb-1 text-md text-emerald" style="font-size: 1.15rem; color: var(--accent-emerald) !important;">Autonomous Lead Qualification</h4>
+              <p class="text-muted text-xs mb-0" style="font-size: 0.85rem; line-height: 1.45;">Automatically screens every submission using custom BANT scorecards before routing to agent calendars.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: INDUSTRY SUCCESS STORIES -->
+  <section class="success-stories-section py-6 overflow-hidden" style="border-top: 1px solid var(--border-color);" id="success-stories">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-teal); background-color: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.15)">
+          Client Success
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Sector Case Studies</h2>
+        <p class="text-secondary">
+          See how leading teams in every vertical use our AI models to drive real business results and revenue milestones.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Case study 1 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50" id="success-story-1">
+          <div class="p-4 rounded border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-card); border-color: var(--border-color);">
+            <div>
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="position-relative" style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--border-color);">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins, head of SDR" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Sarah Jenkins</strong>
+                  <span class="text-muted font-mono" style="font-size: 0.72rem;">Head of SDR &bull; CloudFlow SaaS</span>
+                </div>
+              </div>
+              <p class="text-secondary text-xs italic" style="font-size: 0.95rem; line-height: 1.55; margin-bottom: 24px;">
+                "AuraSales integrated perfectly with our HubSpot pipeline and handled SSO and security objections autonomously. Our demo booking rates skyrocketed by 18.5% within weeks."
+              </p>
+            </div>
+            <div class="border-top pt-3">
+              <span class="testimonial-metrics-badge"><i class="fa-solid fa-up-long"></i> +42% Pipeline Worth</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case study 2 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100" id="success-story-2">
+          <div class="p-4 rounded border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-card); border-color: var(--border-color);">
+            <div>
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="position-relative" style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--border-color);">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Marcus Sterling, Principal broker" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Marcus Sterling</strong>
+                  <span class="text-muted font-mono" style="font-size: 0.72rem;">Principal &bull; Sterling PropTech</span>
+                </div>
+              </div>
+              <p class="text-secondary text-xs italic" style="font-size: 0.95rem; line-height: 1.55; margin-bottom: 24px;">
+                "Property buyers expect real-time viewing bookings. AuraSales queries lead budgets, schedules showing appointments instantly on Google Calendar, and enriches contact profiles seamlessly."
+              </p>
+            </div>
+            <div class="border-top pt-3">
+              <span class="testimonial-metrics-badge" style="background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.2); color: var(--accent-teal);"><i class="fa-solid fa-house-circle-check"></i> 3x More Property Tours</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case study 3 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150" id="success-story-3">
+          <div class="p-4 rounded border h-100 d-flex flex-column justify-content-between" style="background: var(--bg-card); border-color: var(--border-color);">
+            <div>
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="position-relative" style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--border-color);">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Dr. Amanda Ross, Clinic Director" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <strong class="d-block font-display" style="font-size: 0.95rem; color: var(--text-primary);">Dr. Amanda Ross</strong>
+                  <span class="text-muted font-mono" style="font-size: 0.72rem;">Clinic Director &bull; Ross Aesthetics</span>
+                </div>
+              </div>
+              <p class="text-secondary text-xs italic" style="font-size: 0.95rem; line-height: 1.55; margin-bottom: 24px;">
+                "By screening patient eligibility under secure HIPAA protocols, AuraSales reduced our front-desk intake friction by 70% while maximizing daily booking schedules."
+              </p>
+            </div>
+            <div class="border-top pt-3">
+              <span class="testimonial-metrics-badge" style="background: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.2); color: var(--accent-primary);"><i class="fa-solid fa-clock-rotate-left"></i> -70% Intake Hours</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: INDUSTRY COMPARISON -->
+  <section class="comparison-section py-6 overflow-hidden" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);" id="industry-comparison">
+    <div class="container-custom">
+      <div class="text-center mb-5 max-w-600 mx-auto" data-aos="fade-up">
+        <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+          Deep Matrix
+        </span>
+        <h2 class="display-5 fw-bold font-display" style="color: var(--text-primary);">Industry Feature Matrix</h2>
+        <p class="text-secondary">
+          Compare how parameters are tuned across our core vertical models to deliver maximum outbound relevance.
+        </p>
+      </div>
+
+      <!-- Table comparison representation -->
+      <div class="table-responsive rounded border bg-card" style="background: var(--bg-card); border-color: var(--border-color) !important;" data-aos="fade-up" id="comparison-table-wrapper">
+        <table class="table mb-0 align-middle">
+          <thead>
+            <tr class="comparison-grid-header">
+              <th scope="col" class="py-3 px-4 font-display text-primary" style="font-size: 0.9rem;">Tuning parameters</th>
+              <th scope="col" class="py-3 px-4 font-display text-primary" style="font-size: 0.9rem;">B2B SaaS</th>
+              <th scope="col" class="py-3 px-4 font-display text-primary" style="font-size: 0.9rem;">Real Estate</th>
+              <th scope="col" class="py-3 px-4 font-display text-primary" style="font-size: 0.9rem;">Healthcare</th>
+              <th scope="col" class="py-3 px-4 font-display text-primary" style="font-size: 0.9rem;">Finance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">Lead Volume Capacity</th>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">100k+ Leads/mo</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">10k+ Leads/mo</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">5k+ Patients/mo</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">2k+ Clients/mo</td>
+            </tr>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">Automation Sequence</th>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Dynamic followups</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">SMS &amp; Email triggers</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Intake screening</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Secure asset check</td>
+            </tr>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">Meetings Scheduled</th>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">AE Zoom demos</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Property tours</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Intake consultation</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Certified advisor call</td>
+            </tr>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">CRM Integration</th>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Salesforce, HubSpot</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">FollowUpBoss, kvCORE</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Epic Systems, Cerner</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Wealthbox, Redtail</td>
+            </tr>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">Analytics &amp; Charts</th>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">CAC &amp; LTV mapping</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Tour completion rate</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Patient intake stats</td>
+              <td class="py-3 px-4 font-mono text-muted" style="font-size: 0.82rem;">Asset value segments</td>
+            </tr>
+            <tr class="comparison-row">
+              <th scope="row" class="py-3 px-4 font-display text-primary" style="font-size: 0.88rem;">Compliance &amp; Customization</th>
+              <td class="py-3 px-4 text-emerald font-mono fw-bold" style="font-size: 0.82rem; color: var(--accent-emerald) !important;"><i class="fa-solid fa-circle-check"></i> SOC2 Ready</td>
+              <td class="py-3 px-4 text-emerald font-mono fw-bold" style="font-size: 0.82rem; color: var(--accent-emerald) !important;"><i class="fa-solid fa-circle-check"></i> Fair Housing Compliant</td>
+              <td class="py-3 px-4 text-emerald font-mono fw-bold" style="font-size: 0.82rem; color: var(--accent-emerald) !important;"><i class="fa-solid fa-circle-check"></i> HIPAA Secured</td>
+              <td class="py-3 px-4 text-emerald font-mono fw-bold" style="font-size: 0.82rem; color: var(--accent-emerald) !important;"><i class="fa-solid fa-circle-check"></i> SEC &amp; FINRA Audit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FINAL CTA -->
+  <section class="cta-banner-section py-7 overflow-hidden position-relative" id="final-cta-section">
+    <div class="cta-bg-decor"></div>
+    <div class="container-custom position-relative" style="z-index: 2;">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+          <span class="badge-premium mb-3" style="color: var(--accent-primary); background-color: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.15)">
+            <i class="fa-solid fa-rocket me-1"></i> Accelerate Revenue
+          </span>
+          <h2 class="display-3 fw-bold tracking-tight mb-4 font-display text-primary" style="letter-spacing: -0.02em; line-height: 1.15;">
+            Deploy AuraSales to Your Pipeline
+          </h2>
+          <p class="lead text-secondary mb-4" style="font-size: 1.12rem; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Get started with a 14-day free trial on our pre-trained models. No credit card required, instant CRM connection, and absolute zero onboarding friction.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="signup.html" class="btn-premium py-3 px-5 d-inline-flex align-items-center gap-2" id="cta-trial-btn" style="font-family: var(--font-display); font-weight: 700;">
+              Start Free Trial <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="contact.html" class="btn-premium-outline py-3 px-5 d-inline-flex align-items-center gap-2" id="cta-sales-btn" style="font-family: var(--font-display); font-weight: 700;">
+              Talk to Sales <i class="fa-solid fa-headset"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Footer Section -->
+  <footer class="site-footer py-6 border-top" style="border-color: var(--border-color) !important;">
+    <div class="container-custom">
+      <div class="row g-5">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="col-lg-3 col-md-12" data-aos="fade-up">
+          <a class="navbar-brand d-inline-block mb-4" href="index.html">
+            <i class="fa-solid fa-brain brand-icon me-2"></i>
+            <span>AuraSales</span>
+          </a>
+          <p class="text-secondary text-sm mb-4" style="font-size: 0.88rem; line-height: 1.6;">
+            Deploy specialized conversational structures, HIPAA / SOC2 secured layers, and dynamic calendar routing paths to scale outbound meeting volume autonomously.
+          </p>
+          <div class="d-flex gap-2">
+            <a href="https://twitter.com/aurasales" class="footer-social-icon" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/aurasales" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://youtube.com/c/aurasales" class="footer-social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/aurasales" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/aurasales" class="footer-social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <div class="col-lg-2 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+          <h5 class="footer-title-premium text-uppercase tracking-wider font-mono mb-4" style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary);">
+            Product
+          </h5>
+          <ul class="list-unstyled footer-links-premium">
+            <li class="mb-2"><a href="features.html">Platform Features</a></li>
+            <li class="mb-2"><a href="solutions.html">Target Solutions</a></li>
+            <li class="mb-2"><a href="pricing.html">Transparent Pricing</a></li>
+            <li class="mb-2"><a href="integrations.html">CRM Integrations</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="col-lg-2 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+          <h5 class="footer-title-premium text-uppercase tracking-wider font-mono mb-4" style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary);">
+            Resources
+          </h5>
+          <ul class="list-unstyled footer-links-premium">
+            <li class="mb-2"><a href="blog.html">Sales Tech Blog</a></li>
+            <li class="mb-2"><a href="docs.html">Documentation Hub</a></li>
+            <li class="mb-2"><a href="help.html">Enterprise Help Center</a></li>
+            <li class="mb-2"><a href="faq.html">System FAQ Database</a></li>
+            <li class="mb-2"><a href="cases.html">Client Case Studies</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Company -->
+        <div class="col-lg-2 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+          <h5 class="footer-title-premium text-uppercase tracking-wider font-mono mb-4" style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary);">
+            Company
+          </h5>
+          <ul class="list-unstyled footer-links-premium">
+            <li class="mb-2"><a href="about.html">About Our Mission</a></li>
+            <li class="mb-2"><a href="careers.html">Open Careers</a></li>
+            <li class="mb-2"><a href="partners.html">Partners Network</a></li>
+            <li class="mb-2"><a href="contact.html">Contact Revenue Hub</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact Info -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
+          <h5 class="footer-title-premium text-uppercase tracking-wider font-mono mb-4" style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary);">
+            Contact Segment
+          </h5>
+          
+          <div class="footer-contact-item d-flex gap-3 mb-3">
+            <i class="fa-solid fa-envelope text-muted mt-1" style="font-size: 0.85rem;"></i>
+            <div>
+              <span class="d-block text-secondary font-mono" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;">Business Email</span>
+              <a href="mailto:info@aurasales.ai" class="text-primary fw-medium hover-link" style="font-size: 0.85rem; text-decoration: none;">info@aurasales.ai</a>
+            </div>
+          </div>
+
+          <div class="footer-contact-item d-flex gap-3 mb-3">
+            <i class="fa-solid fa-phone text-muted mt-1" style="font-size: 0.85rem;"></i>
+            <div>
+              <span class="d-block text-secondary font-mono" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;">Direct Line</span>
+              <a href="tel:+18005550199" class="text-primary fw-medium hover-link" style="font-size: 0.85rem; text-decoration: none;">+1 (800) 555-0199</a>
+            </div>
+          </div>
+
+          <div class="footer-contact-item d-flex gap-3 mb-3">
+            <i class="fa-solid fa-location-dot text-muted mt-1" style="font-size: 0.85rem;"></i>
+            <div>
+              <span class="d-block text-secondary font-mono" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;">Headquarters</span>
+              <span class="text-secondary" style="font-size: 0.85rem; line-height: 1.4;">100 Pine St, Floor 17, San Francisco, CA 94111</span>
+            </div>
+          </div>
+
+          <div class="footer-contact-item d-flex gap-3">
+            <i class="fa-solid fa-clock text-muted mt-1" style="font-size: 0.85rem;"></i>
+            <div>
+              <span class="d-block text-secondary font-mono" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;">Office Hours</span>
+              <span class="text-secondary" style="font-size: 0.85rem;">Mon &ndash; Fri: 8:00 AM &ndash; 6:00 PM PST</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <hr class="my-5" style="border-color: var(--border-color);">
+
+      <!-- Bottom Row Segment -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <p class="text-muted mb-0" style="font-size: 0.82rem;">
+          &copy; <span id="current-year-display">2026</span> AuraSales Inc. All rights reserved.
+        </p>
+        
+        <div class="d-flex flex-wrap gap-4">
+          <a href="privacy.html" class="text-muted hover-link" style="font-size: 0.82rem;">Privacy Policy</a>
+          <a href="terms.html" class="text-muted hover-link" style="font-size: 0.82rem;">Terms of Service</a>
+          <a href="cookies.html" class="text-muted hover-link" style="font-size: 0.82rem;">Cookie Policy</a>
+          <a href="license.html" class="text-muted hover-link" style="font-size: 0.82rem;">License</a>
+          <a href="sitemap.html" class="text-muted hover-link" style="font-size: 0.82rem;">Sitemap</a>
+          <a href="accessibility.html" class="text-muted hover-link" style="font-size: 0.82rem;">Accessibility Statement</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <div id="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- CDN Script Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom Executable Main Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animation.js"></script>
+
+  <!-- Vanilla JS Interactive Showcase logic -->
+  <script>
+    // Industries dataset representing model calibration shifts
+    const industryData = {
+      saas: {
+        badge: "VERTICAL TARGET: B2B SAAS",
+        title: "Software &amp; SaaS Model Calibration",
+        kpi: "<i class='fa-solid fa-circle-nodes me-1'></i> 18.5% Demo Rate",
+        steps: [
+          "Web Signup Inquiry",
+          "Enrichment / SOC2 objection",
+          "Book Demo with Rep"
+        ],
+        metrics: [
+          "9 seconds",
+          "+24% conversions"
+        ],
+        pipeline: {
+          tag: "Demo Route",
+          text: "Qualified (SOC2 check completed)",
+          pct: 75
+        },
+        chat: {
+          user: '"Does AuraSales support SAML SSO and SOC2?"',
+          bot: '"Absolutely! We support SAML SSO and are fully SOC2 Type II compliant. Let me schedule a call with our technical architect."'
+        },
+        subText: "Pre-loaded model weights are optimized for Enterprise SaaS organizations.",
+        btnText: "Deploy SaaS Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      realestate: {
+        badge: "VERTICAL TARGET: PROPTECH",
+        title: "Real Estate Model Calibration",
+        kpi: "<i class='fa-solid fa-house-circle-check me-1'></i> 34.2% Tour Booking",
+        steps: [
+          "Property Detail Request",
+          "Budget &amp; Pre-approval Check",
+          "Schedule Showing Appointment"
+        ],
+        metrics: [
+          "12 seconds",
+          "98% enriched"
+        ],
+        pipeline: {
+          tag: "Viewing Tour",
+          text: "Tour Booked (Pre-approval validated)",
+          pct: 90
+        },
+        chat: {
+          user: '"I\'d love to tour the 3-bed condo on Oak Street tomorrow afternoon."',
+          bot: '"Great choice! The agent is free at 2:00 PM and 4:30 PM PST tomorrow. Which works best for you?"'
+        },
+        subText: "Pre-loaded weights are optimized for luxury, residential, and commercial real estate agents.",
+        btnText: "Deploy PropTech Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      healthcare: {
+        badge: "VERTICAL TARGET: CLINICAL",
+        title: "Healthcare Model Calibration",
+        kpi: "<i class='fa-solid fa-shield-heart me-1'></i> HIPAA Secured",
+        steps: [
+          "Symptom / Elective Intake",
+          "HIPAA Consent &amp; Security Screen",
+          "Book Doctor Evaluation"
+        ],
+        metrics: [
+          "15 seconds",
+          "91% triage score"
+        ],
+        pipeline: {
+          tag: "Consult Intake",
+          text: "HIPAA Compliant Consent Logged",
+          pct: 60
+        },
+        chat: {
+          user: '"Do you offer free consults for the laser correction procedure?"',
+          bot: '"Yes! We offer 15-minute video evaluations with Dr. Vance. Let\'s find a slot to check your eligibility."'
+        },
+        subText: "Tuned on high-compliance elective cosmetic, dental, and general clinical triage terminology.",
+        btnText: "Deploy Clinic Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      education: {
+        badge: "VERTICAL TARGET: EDTECH",
+        title: "Education Model Calibration",
+        kpi: "<i class='fa-solid fa-graduation-cap me-1'></i> +54% Enrollment Yield",
+        steps: [
+          "Degree Program Interest",
+          "Prerequisite &amp; Funding FAQ Match",
+          "Counselor Appointment Confirmed"
+        ],
+        metrics: [
+          "14 seconds",
+          "96.5% FAQ accuracy"
+        ],
+        pipeline: {
+          tag: "Admissions Hub",
+          text: "Counselor Handoff (Undergrad cleared)",
+          pct: 80
+        },
+        chat: {
+          user: '"What are the requirements for the MBA program?"',
+          bot: '"You\'ll need a bachelor\'s degree and 2 years of work experience. Let me connect you with an advisor to review your background."'
+        },
+        subText: "Pre-trained on higher education catalogs, scholarship guidelines, and tuition payment processes.",
+        btnText: "Deploy EdTech Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      finance: {
+        badge: "VERTICAL TARGET: WEALTH TECH",
+        title: "Finance &amp; Banking Model Calibration",
+        kpi: "<i class='fa-solid fa-shield-halved me-1'></i> FINRA Audited",
+        steps: [
+          "Asset Assessment / Inquiry",
+          "Securities Compliance Check",
+          "Strategy Booking (Manger Match)"
+        ],
+        metrics: [
+          "4.5 seconds",
+          "+38% AUM growth"
+        ],
+        pipeline: {
+          tag: "Asset Clear",
+          text: "Approved Portfolio ($1.2M verified)",
+          pct: 85
+        },
+        chat: {
+          user: '"I need to roll over my 401(k) and need an advisory firm that manages $1M+ portfolios."',
+          bot: '"We specialize in rollovers of that size. I\'m matching you with our Senior Retirement Planner."'
+        },
+        subText: "Pre-trained under strict FINRA, SEC, and insurance premium compliance frameworks.",
+        btnText: "Deploy Wealth Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      ecommerce: {
+        badge: "VERTICAL TARGET: RETAIL",
+        title: "E-commerce Model Calibration",
+        kpi: "<i class='fa-solid fa-cart-shopping me-1'></i> 12.4% Recovery",
+        steps: [
+          "Bulk Wholesaler Request",
+          "MOQ Validation &amp; Invoicing",
+          "Contract Confirmation &amp; Sync"
+        ],
+        metrics: [
+          "10 seconds",
+          "-60% ticket load"
+        ],
+        pipeline: {
+          tag: "Wholesale Order",
+          text: "Invoice Generated (500 units)",
+          pct: 70
+        },
+        chat: {
+          user: '"We want to purchase 500 custom branded mugs for our corporate retreat next month."',
+          bot: '"We can certainly handle that bulk order! Let me grab your logo design and send a custom wholesale invoice."'
+        },
+        subText: "Tuned on cart recovery rules, wholesale minimum order sizes, and ambassador partnerships.",
+        btnText: "Deploy Retail Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      travel: {
+        badge: "VERTICAL TARGET: HOSPITALITY",
+        title: "Travel &amp; Hospitality Model Calibration",
+        kpi: "<i class='fa-solid fa-plane-departure me-1'></i> 88% Group Qualified",
+        steps: [
+          "Retreat Itinerary Submission",
+          "Group Capacity check (20+)",
+          "Travel Advisor Connection"
+        ],
+        metrics: [
+          "15 seconds",
+          "+45% group booking"
+        ],
+        pipeline: {
+          tag: "VIP Itinerary",
+          text: "Destination Confirmed (Aspen, Feb)",
+          pct: 95
+        },
+        chat: {
+          user: '"We are organizing a corporate ski retreat in Aspen for 25 people."',
+          bot: '"Aspen is perfect in February! I\'ll connect you with our Group Events Specialist to finalize lodging."'
+        },
+        subText: "Pre-trained on luxury booking calendars, corporate outings, and travel destination databases.",
+        btnText: "Deploy Travel Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      },
+      agency: {
+        badge: "VERTICAL TARGET: SERVICES",
+        title: "Agency Model Calibration",
+        kpi: "<i class='fa-solid fa-bullhorn me-1'></i> +65% Pipeline Gain",
+        steps: [
+          "GTM Form Audit request",
+          "Ad Spend qualification ($10k+)",
+          "Book Zoom Strategy Session"
+        ],
+        metrics: [
+          "8 seconds",
+          "93% spend check"
+        ],
+        pipeline: {
+          tag: "Strategy Zoom",
+          text: "Audit Pending (Verified $12k spend)",
+          pct: 80
+        },
+        chat: {
+          user: '"We spend $10k/mo on Google Ads but want to double our budget and scale."',
+          bot: '"We love scaling accounts at that stage. Let\'s book a free strategy call to share our SaaS audit templates."'
+        },
+        subText: "Tuned to capture spend, audit metrics, digital platforms, and book strategy sessions.",
+        btnText: "Deploy Agency Model <i class='fa-solid fa-chevron-right ms-1'></i>"
+      }
+    };
+
+    function selectShowcaseTab(industryKey) {
+      // 1. Update tab buttons active class
+      const buttons = document.querySelectorAll('.showcase-tab-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        const icon = btn.querySelector('.showcase-icon');
+        if (icon) {
+          icon.style.color = 'var(--text-muted)';
+        }
+      });
+
+      const activeBtn = document.getElementById(`btn-${industryKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        const icon = activeBtn.querySelector('.showcase-icon');
+        if (icon) {
+          icon.style.color = '#FFFFFF';
+        }
+      }
+
+      // 2. Fetch specific industry data details
+      const data = industryData[industryKey];
+      if (!data) return;
+
+      // 3. Smooth transition values with simple DOM updates
+      const container = document.getElementById('simulator-container');
+      container.style.opacity = '0.35';
+      container.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        // Update labels
+        document.getElementById('sim-industry-badge').textContent = data.badge;
+        document.getElementById('sim-industry-title').innerHTML = data.title;
+        document.getElementById('sim-main-kpi').innerHTML = data.kpi;
+        
+        // Update workflow text steps
+        document.getElementById('sim-step-1').querySelector('span').innerHTML = `<strong>Step 1:</strong> ${data.steps[0]}`;
+        document.getElementById('sim-step-2').querySelector('span').innerHTML = `<strong>Step 2:</strong> ${data.steps[1]}`;
+        document.getElementById('sim-step-3').querySelector('span').innerHTML = `<strong>Step 3:</strong> ${data.steps[2]}`;
+
+        // Update metric values
+        document.getElementById('sim-metric-val-1').textContent = data.metrics[0];
+        document.getElementById('sim-metric-val-2').textContent = data.metrics[1];
+
+        // Update pipeline box
+        document.getElementById('sim-pipeline-tag').textContent = data.pipeline.tag;
+        document.getElementById('sim-pipeline-text').textContent = data.pipeline.text;
+        
+        const progressBar = document.getElementById('sim-pipeline-progress');
+        progressBar.style.width = `${data.pipeline.pct}%`;
+        progressBar.setAttribute('aria-valuenow', data.pipeline.pct);
+
+        // Update Chat bubble text
+        document.getElementById('sim-dialog-user').textContent = data.chat.user;
+        document.getElementById('sim-dialog-bot').textContent = data.chat.bot;
+
+        // Bottom CTA items
+        document.getElementById('sim-sub-text').textContent = data.subText;
+        document.getElementById('sim-cta-btn').innerHTML = data.btnText;
+
+        // Restore active layout representation
+        container.style.opacity = '1';
+        container.style.transform = 'translateY(0)';
+      }, 200);
+    }
+  </script>
+</body>
+</html>
